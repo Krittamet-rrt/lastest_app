@@ -25,17 +25,11 @@ class LastestTimeList extends StatelessWidget {
                     child: Card(
                       child: ListTile(
                         leading: Checkbox(
-                          value: items[index].isChecked == false,
-                          onChanged: (checked) {
-                            if (checked!) {
-                              context
-                                  .read<LastestTimeBloc>()
-                                  .add(CheckEvent(items[index].id));
-                            } else {
-                              context
-                                  .read<LastestTimeBloc>()
-                                  .add(UncheckEvent(items[index].id));
-                            }
+                          value: items[index].markTime != null,
+                          onChanged: (bool? value) {
+                            context.read<LastestTimeBloc>().add(value == true
+                                ? CheckEvent(items[index].id)
+                                : UncheckEvent(items[index].id));
                           },
                           fillColor: WidgetStateProperty.resolveWith<Color>(
                               (Set<WidgetState> states) {
@@ -52,30 +46,30 @@ class LastestTimeList extends StatelessWidget {
                           style: GoogleFonts.prompt(
                               fontSize: 20,
                               color: Colors.black,
-                              decoration: items[index].isChecked
+                              decoration: items[index].markTime != null
                                   ? TextDecoration.lineThrough
                                   : TextDecoration.none),
                         ),
-                        subtitle: items[index].isChecked
+                        subtitle: items[index].markTime != null
                             ? Text(
+                                'Done',
+                                style: GoogleFonts.prompt(
+                                    fontSize: 13, color: Colors.green),
+                              )
+                            : Text(
                                 '${items[index].cycleExp.toString()} day left',
                                 style: GoogleFonts.prompt(
                                   fontSize: 13,
                                   color: Colors.grey,
                                 ),
-                              )
-                            : Text(
-                                'Done',
-                                style: GoogleFonts.prompt(
-                                    fontSize: 13, color: Colors.green),
                               ),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           color: Colors.red,
                           onPressed: () {
-                            // context
-                            //    .read<LasttestTimeBloc>()
-                            //    .add(RemoveEvent(items[index].id));
+                            context
+                                .read<LastestTimeBloc>()
+                                .add(DeleteEvent(items[index].id));
                           },
                         ),
                       ),

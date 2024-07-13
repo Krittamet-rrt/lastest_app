@@ -23,4 +23,9 @@ class UncheckEvent extends LastestTimeEvent {
   UncheckEvent(this.id);
 }
 
+class DeleteEvent extends LastestTimeEvent {
+  final int id;
+  DeleteEvent(this.id);
+}
+
 class SearchClearEvent extends LastestTimeEvent {}

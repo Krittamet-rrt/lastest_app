@@ -10,6 +10,7 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
     on<LoadEvent>(_onLoaded);
     on<CheckEvent>(_onCheck);
     on<UncheckEvent>(_onUncheck);
+    on<DeleteEvent>(_onDelete);
   }
 
   void _onLoaded(LoadEvent event, Emitter<LastestTimeState> emit) async {
@@ -42,6 +43,18 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
               item.id, item.name, item.cycleExp, null, item.isChecked == false);
         }
         return item;
+      }).toList();
+
+      await repo.save(updatedItems);
+      emit(ReadyState(items: updatedItems));
+    }
+  }
+
+  void _onDelete(DeleteEvent event, Emitter<LastestTimeState> emit) async {
+    if (state is ReadyState) {
+      final currentState = state as ReadyState;
+      final updatedItems = currentState.items.where((item) {
+        return item.id != event.id;
       }).toList();
 
       await repo.save(updatedItems);
