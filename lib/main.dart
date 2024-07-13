@@ -16,8 +16,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider<LasttestTimeBloc>(create: (context) {
-            final bloc = LasttestTimeBloc(MockRepo());
+          BlocProvider<LastestTimeBloc>(create: (context) {
+            final bloc = LastestTimeBloc(MockRepo());
             bloc.add(LoadEvent());
             return bloc;
           })
@@ -25,13 +25,26 @@ class MainApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: const Text('Todo'),
-              backgroundColor: Colors.white,
-            ),
             body: const Center(
               child: LastestTimePage(),
+            ),
+            bottomNavigationBar: BottomAppBar(
+              color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.list),
+                    color: Colors.blue,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.add),
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
             ),
           ),
         ));

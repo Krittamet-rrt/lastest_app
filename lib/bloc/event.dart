@@ -2,15 +2,25 @@ sealed class LastestTimeEvent {}
 
 class LoadEvent extends LastestTimeEvent {}
 
-class LasttestTimeMarkEvent extends LastestTimeEvent {
+class LastestTimeMarkEvent extends LastestTimeEvent {
   final int id;
   final DateTime markTime;
-  LasttestTimeMarkEvent(this.id, this.markTime);
+  LastestTimeMarkEvent(this.id, this.markTime);
 }
 
 class SearchEvent extends LastestTimeEvent {
   final String key;
   SearchEvent(this.key);
+}
+
+class CheckEvent extends LastestTimeEvent {
+  final int id;
+  CheckEvent(this.id);
+}
+
+class UncheckEvent extends LastestTimeEvent {
+  final int id;
+  UncheckEvent(this.id);
 }
 
 class SearchClearEvent extends LastestTimeEvent {}

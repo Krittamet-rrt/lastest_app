@@ -7,7 +7,7 @@ class LastestTimeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = context.select((LasttestTimeBloc bloc) => bloc.state.items);
+    final items = context.select((LastestTimeBloc bloc) => bloc.state.items);
     return Expanded(
         child: items.isEmpty
             ? const SizedBox(
@@ -19,35 +19,35 @@ class LastestTimeList extends StatelessWidget {
             : ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Checkbox(
-                            value: items[index].markTime != null,
-                            onChanged: (checked) {}
-                            //   if (checked) {
-                            //     context
-                            //        .read<LasttestTimeBloc>()
-                            //        .add(MarkEvent(items[index].id));
-                            //   } else {
-                            //     context
-                            //        .read<LasttestTimeBloc>()
-                            //        .add(UnmarkEvent(items[index].id));
-                            //   }
-                            // },
-                            ),
-                        Text(items[index].name),
-                        IconButton(
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 3.0),
+                    child: Card(
+                      child: ListTile(
+                        leading: Checkbox(
+                          value: items[index].markTime != null,
+                          onChanged: (checked) {
+                            if (checked!) {
+                              context
+                                  .read<LastestTimeBloc>()
+                                  .add(CheckEvent(items[index].id));
+                            } else {
+                              context
+                                  .read<LastestTimeBloc>()
+                                  .add(UncheckEvent(items[index].id));
+                            }
+                          },
+                        ),
+                        title: Text(items[index].name),
+                        trailing: IconButton(
                           icon: const Icon(Icons.delete),
-                          alignment: Alignment.centerRight,
+                          color: Colors.red,
                           onPressed: () {
                             // context
                             //    .read<LasttestTimeBloc>()
                             //    .add(RemoveEvent(items[index].id));
                           },
                         ),
-                      ],
+                      ),
                     ),
                   );
                 }));

@@ -1,11 +1,11 @@
 import 'package:lastest_time/models/last_time_item.dart';
 
 sealed class LastestTimeState {
-  final List<LasttestTimeItem> items;
+  final List<LastestTimeItem> items;
   LastestTimeState({required this.items});
 }
 
-const List<LasttestTimeItem> empty = [];
+const List<LastestTimeItem> empty = [];
 
 class LoadingState extends LastestTimeState {
   LoadingState() : super(items: empty);

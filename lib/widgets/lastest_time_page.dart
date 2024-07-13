@@ -8,15 +8,14 @@ class LastestTimePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LasttestTimeBloc, LastestTimeState>(
+    return BlocBuilder<LastestTimeBloc, LastestTimeState>(
       builder: (context, state) {
         return state is LoadingState
             ? const Center(
                 child: CircularProgressIndicator(),
               )
             : const Padding(
-                padding: EdgeInsets.only(
-                    top: 50.0, bottom: 20.0, left: 200.0, right: 200.0),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: LastestTimeList(),
               );
       },
