@@ -28,4 +28,10 @@ class DeleteEvent extends LastestTimeEvent {
   DeleteEvent(this.id);
 }
 
+class AddEvent extends LastestTimeEvent {
+  final String name;
+  final int cycleExp;
+  AddEvent({required this.name, required this.cycleExp});
+}
+
 class SearchClearEvent extends LastestTimeEvent {}

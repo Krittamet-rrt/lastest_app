@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
+import 'package:lastest_time/widgets/add_dialog.dart';
 
 class LastestTimeList extends StatelessWidget {
   const LastestTimeList({super.key});
@@ -9,7 +10,7 @@ class LastestTimeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = context.select((LastestTimeBloc bloc) => bloc.state.items);
-    return Expanded(
+    return LimitedBox(
         child: items.isEmpty
             ? const SizedBox(
                 height: 200,
@@ -23,6 +24,9 @@ class LastestTimeList extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 3.0),
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       child: ListTile(
                         leading: Checkbox(
                           value: items[index].markTime != null,
@@ -67,9 +71,41 @@ class LastestTimeList extends StatelessWidget {
                           icon: const Icon(Icons.delete),
                           color: Colors.red,
                           onPressed: () {
-                            context
-                                .read<LastestTimeBloc>()
-                                .add(DeleteEvent(items[index].id));
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text('Confirm Delete',
+                                        style: GoogleFonts.prompt()),
+                                    content: Text(
+                                        'Are you sure you want to delete this item?',
+                                        style: GoogleFonts.prompt()),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        child: Text(
+                                          'Cancel',
+                                          style: GoogleFonts.prompt(),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      TextButton(
+                                        child: Text(
+                                          'Delete',
+                                          style: GoogleFonts.prompt(
+                                              color: Colors.red,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        onPressed: () {
+                                          context.read<LastestTimeBloc>().add(
+                                              DeleteEvent(items[index].id));
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ],
+                                  );
+                                });
                           },
                         ),
                       ),
