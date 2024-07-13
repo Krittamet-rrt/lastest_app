@@ -22,8 +22,8 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
       final currentState = state as ReadyState;
       final updatedItems = currentState.items.map((item) {
         if (item.id == event.id) {
-          return LastestTimeItem(
-              item.id, item.name, item.cycleExp, DateTime.now());
+          return LastestTimeItem(item.id, item.name, item.cycleExp,
+              DateTime.now(), item.isChecked == true);
         }
         return item;
       }).toList();
@@ -38,7 +38,8 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
       final currentState = state as ReadyState;
       final updatedItems = currentState.items.map((item) {
         if (item.id == event.id) {
-          return LastestTimeItem(item.id, item.name, item.cycleExp, null);
+          return LastestTimeItem(
+              item.id, item.name, item.cycleExp, null, item.isChecked == false);
         }
         return item;
       }).toList();

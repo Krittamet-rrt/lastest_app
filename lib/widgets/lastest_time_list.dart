@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
 
 class LastestTimeList extends StatelessWidget {
@@ -24,7 +25,7 @@ class LastestTimeList extends StatelessWidget {
                     child: Card(
                       child: ListTile(
                         leading: Checkbox(
-                          value: items[index].markTime != null,
+                          value: items[index].isChecked == false,
                           onChanged: (checked) {
                             if (checked!) {
                               context
@@ -36,8 +37,38 @@ class LastestTimeList extends StatelessWidget {
                                   .add(UncheckEvent(items[index].id));
                             }
                           },
+                          fillColor: WidgetStateProperty.resolveWith<Color>(
+                              (Set<WidgetState> states) {
+                            if (states.contains(WidgetState.selected)) {
+                              return Colors
+                                  .blue; // Use your desired color when checked
+                            }
+                            return Colors
+                                .transparent; // Use your desired color when unchecked
+                          }),
                         ),
-                        title: Text(items[index].name),
+                        title: Text(
+                          items[index].name,
+                          style: GoogleFonts.prompt(
+                              fontSize: 20,
+                              color: Colors.black,
+                              decoration: items[index].isChecked
+                                  ? TextDecoration.lineThrough
+                                  : TextDecoration.none),
+                        ),
+                        subtitle: items[index].isChecked
+                            ? Text(
+                                '${items[index].cycleExp.toString()} day left',
+                                style: GoogleFonts.prompt(
+                                  fontSize: 13,
+                                  color: Colors.grey,
+                                ),
+                              )
+                            : Text(
+                                'Done',
+                                style: GoogleFonts.prompt(
+                                    fontSize: 13, color: Colors.green),
+                              ),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           color: Colors.red,

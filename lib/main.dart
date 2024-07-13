@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
 import 'package:lastest_time/repo/mock_repo.dart';
 import 'package:lastest_time/widgets/lastest_time_page.dart';
@@ -25,6 +26,17 @@ class MainApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text(
+                'Lastest App',
+                style: GoogleFonts.prompt(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              backgroundColor: Colors.blue,
+            ),
             body: const Center(
               child: LastestTimePage(),
             ),
@@ -34,13 +46,15 @@ class MainApp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   IconButton(
+                    iconSize: 30,
                     onPressed: () {},
                     icon: const Icon(Icons.list),
                     color: Colors.blue,
                   ),
                   IconButton(
+                    iconSize: 30,
                     onPressed: () {},
-                    icon: const Icon(Icons.add),
+                    icon: const Icon(Icons.check),
                     color: Colors.blue,
                   ),
                 ],
