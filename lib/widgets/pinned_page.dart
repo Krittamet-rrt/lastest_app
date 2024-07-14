@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
 import 'package:lastest_time/widgets/add_dialog.dart';
-import 'package:lastest_time/widgets/lastest_time_list.dart';
+import 'package:lastest_time/widgets/pinned_list.dart';
 
-class LastestTimePage extends StatelessWidget {
-  const LastestTimePage({super.key});
+class PinnedPage extends StatelessWidget {
+  const PinnedPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class LastestTimePage extends StatelessWidget {
                   Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      child: LastestTimeList()),
+                      child: PinnedList()),
                   Positioned(
                     right: 16,
                     bottom: 16,

@@ -4,18 +4,19 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
 
-class LastestTimeList extends StatelessWidget {
-  const LastestTimeList({super.key});
+class PinnedList extends StatelessWidget {
+  const PinnedList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final items = context.select((LastestTimeBloc bloc) => bloc.state.items);
+    final items = context.select((LastestTimeBloc bloc) =>
+        bloc.state.items.where((item) => item.isPinned).toList());
     return LimitedBox(
         child: items.isEmpty
             ? const Scaffold(
                 body: Center(
                   child: Text(
-                    'Nothing to do please add an item',
+                    'No pinned things',
                     textAlign: TextAlign.center,
                   ),
                 ),

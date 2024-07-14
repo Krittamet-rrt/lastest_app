@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
 import 'package:lastest_time/repo/mock_repo.dart';
 import 'package:lastest_time/widgets/lastest_time_page.dart';
+import 'package:lastest_time/widgets/pinned_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({super.key});
+
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +30,10 @@ class MainApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text(
-                'Lastest App',
-                style: GoogleFonts.prompt(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              backgroundColor: Colors.blue,
-            ),
-            body: const Center(
-              child: LastestTimePage(),
+            body: Center(
+              child: PageView(
+                  controller: _pageController,
+                  children: const [LastestTimePage(), PinnedPage()]),
             ),
             bottomNavigationBar: BottomAppBar(
               color: Colors.white,
@@ -47,13 +42,13 @@ class MainApp extends StatelessWidget {
                 children: <Widget>[
                   IconButton(
                     iconSize: 30,
-                    onPressed: () {},
+                    onPressed: () => _pageController.jumpToPage(0),
                     icon: const Icon(Icons.list),
                     color: Colors.blue,
                   ),
                   IconButton(
                     iconSize: 30,
-                    onPressed: () {},
+                    onPressed: () => _pageController.jumpToPage(1),
                     icon: const Icon(Icons.push_pin),
                     color: Colors.blue,
                   ),
