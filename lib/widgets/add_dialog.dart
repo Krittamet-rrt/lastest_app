@@ -13,7 +13,6 @@ class AddDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     var _textController = TextEditingController();
     var _cycleController = TextEditingController();
-    final items = context.select((LastestTimeBloc bloc) => bloc.state.items);
     return FloatingActionButton(
       onPressed: () {
         showDialog(

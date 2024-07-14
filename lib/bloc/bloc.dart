@@ -87,6 +87,7 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
         }
         return a.cycleExp.compareTo(b.cycleExp);
       });
+
       emit(ReadyState(items: updatedItems));
     }
   }

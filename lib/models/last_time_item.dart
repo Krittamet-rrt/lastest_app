@@ -11,5 +11,5 @@ class LastestTimeItem extends Equatable {
       this.id, this.name, this.cycleExp, this.markTime, this.isPinned);
 
   @override
-  List<Object?> get props => [id, markTime];
+  List<Object?> get props => [id, markTime, isPinned];
 }
