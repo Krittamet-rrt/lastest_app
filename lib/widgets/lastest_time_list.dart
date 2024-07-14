@@ -25,107 +25,111 @@ class LastestTimeList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 3.0),
-                    child: Slidable(
-                      endActionPane:
-                          ActionPane(motion: const ScrollMotion(), children: [
-                        SlidableAction(
-                          onPressed: (context) {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text('Confirm Delete',
-                                        style: GoogleFonts.prompt()),
-                                    content: Text(
-                                        'Are you sure you want to delete this item?',
-                                        style: GoogleFonts.prompt()),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: Text(
-                                          'Cancel',
-                                          style: GoogleFonts.prompt(),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Slidable(
+                        endActionPane:
+                            ActionPane(motion: const ScrollMotion(), children: [
+                          SlidableAction(
+                            onPressed: (context) {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Confirm Delete',
+                                          style: GoogleFonts.prompt()),
+                                      content: Text(
+                                          'Are you sure you want to delete this item?',
+                                          style: GoogleFonts.prompt()),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          child: Text(
+                                            'Cancel',
+                                            style: GoogleFonts.prompt(),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
                                         ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: Text(
-                                          'Delete',
-                                          style: GoogleFonts.prompt(
-                                              color: Colors.red,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        onPressed: () {
-                                          context.read<LastestTimeBloc>().add(
-                                              DeleteEvent(items[index].id));
-                                          Navigator.of(context).pop();
-                                        },
-                                      )
-                                    ],
-                                  );
-                                });
-                          },
-                          backgroundColor: Colors.red,
-                          foregroundColor: Colors.white,
-                          icon: Icons.delete,
-                          label: 'DELETE',
-                        )
-                      ]),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: ListTile(
-                          leading: Checkbox(
-                            value: items[index].markTime != null,
-                            onChanged: (bool? value) {
-                              context.read<LastestTimeBloc>().add(value == true
-                                  ? CheckEvent(items[index].id)
-                                  : UncheckEvent(items[index].id));
+                                        TextButton(
+                                          child: Text(
+                                            'Delete',
+                                            style: GoogleFonts.prompt(
+                                                color: Colors.red,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          onPressed: () {
+                                            context.read<LastestTimeBloc>().add(
+                                                DeleteEvent(items[index].id));
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ],
+                                    );
+                                  });
                             },
-                            fillColor: WidgetStateProperty.resolveWith<Color>(
-                                (Set<WidgetState> states) {
-                              if (states.contains(WidgetState.selected)) {
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
+                            icon: Icons.delete,
+                            label: 'DELETE',
+                          )
+                        ]),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: ListTile(
+                            leading: Checkbox(
+                              value: items[index].markTime != null,
+                              onChanged: (bool? value) {
+                                context.read<LastestTimeBloc>().add(
+                                    value == true
+                                        ? CheckEvent(items[index].id)
+                                        : UncheckEvent(items[index].id));
+                              },
+                              fillColor: WidgetStateProperty.resolveWith<Color>(
+                                  (Set<WidgetState> states) {
+                                if (states.contains(WidgetState.selected)) {
+                                  return Colors
+                                      .blue; // Use your desired color when checked
+                                }
                                 return Colors
-                                    .blue; // Use your desired color when checked
-                              }
-                              return Colors
-                                  .transparent; // Use your desired color when unchecked
-                            }),
-                          ),
-                          title: Text(
-                            items[index].name,
-                            style: GoogleFonts.prompt(
-                                fontSize: 20,
-                                color: Colors.black,
-                                decoration: items[index].markTime != null
-                                    ? TextDecoration.lineThrough
-                                    : TextDecoration.none),
-                          ),
-                          subtitle: items[index].markTime != null
-                              ? Text(
-                                  'Done',
-                                  style: GoogleFonts.prompt(
-                                      fontSize: 13, color: Colors.green),
-                                )
-                              : Text(
-                                  '${items[index].cycleExp.toString()} day left',
-                                  style: GoogleFonts.prompt(
-                                    fontSize: 13,
-                                    color: Colors.grey,
+                                    .transparent; // Use your desired color when unchecked
+                              }),
+                            ),
+                            title: Text(
+                              items[index].name,
+                              style: GoogleFonts.prompt(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  decoration: items[index].markTime != null
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none),
+                            ),
+                            subtitle: items[index].markTime != null
+                                ? Text(
+                                    'Done',
+                                    style: GoogleFonts.prompt(
+                                        fontSize: 13, color: Colors.green),
+                                  )
+                                : Text(
+                                    '${items[index].cycleExp.toString()} day left',
+                                    style: GoogleFonts.prompt(
+                                      fontSize: 13,
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                ),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.push_pin),
-                            color: items[index].isPinned
-                                ? Colors.blue
-                                : Colors.black,
-                            onPressed: () {
-                              context
-                                  .read<LastestTimeBloc>()
-                                  .add(PinEvent(items[index].id));
-                            },
+                            trailing: IconButton(
+                              icon: const Icon(Icons.push_pin),
+                              color: items[index].isPinned
+                                  ? Colors.blue
+                                  : Colors.black,
+                              onPressed: () {
+                                context
+                                    .read<LastestTimeBloc>()
+                                    .add(PinEvent(items[index].id));
+                              },
+                            ),
                           ),
                         ),
                       ),

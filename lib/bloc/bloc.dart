@@ -14,6 +14,7 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
     on<PinEvent>(_onPinned);
     on<DeleteEvent>(_onDelete);
     on<SearchEvent>(_onSearch);
+    on<SearchClearEvent>(_onSearchClear);
   }
 
   void _onLoaded(LoadEvent event, Emitter<LastestTimeState> emit) async {
@@ -106,13 +107,32 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
   }
 
   void _onSearch(SearchEvent event, Emitter<LastestTimeState> emit) async {
-    if (state is ReadyState) {
-      final currentState = state as ReadyState;
-      final key = event.key.toLowerCase();
-      final filterItems = currentState.items
-          .where((item) => item.name.toLowerCase().contains(key))
-          .toList();
-      emit(SearchState(items: filterItems));
+    final items = await repo.load();
+    final key = event.key.toLowerCase();
+    final filterItems =
+        items.where((item) => item.name.toLowerCase().contains(key)).toList();
+    filterItems.sort((a, b) {
+      if (a.isPinned == b.isPinned) {
+        return 0;
+      }
+      return a.isPinned ? -1 : 1;
+    });
+    filterItems.sort((a, b) => a.cycleExp.compareTo(b.cycleExp));
+    emit(SearchState(items: filterItems));
+  }
+
+  void _onSearchClear(
+      SearchClearEvent event, Emitter<LastestTimeState> emit) async {
+    if (state is SearchState) {
+      final items = await repo.load();
+      items.sort((a, b) {
+        if (a.isPinned == b.isPinned) {
+          return 0;
+        }
+        return a.isPinned ? -1 : 1;
+      });
+      items.sort((a, b) => a.cycleExp.compareTo(b.cycleExp));
+      emit(ReadyState(items: items));
     }
   }
 }
