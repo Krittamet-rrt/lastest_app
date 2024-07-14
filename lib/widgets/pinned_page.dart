@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
 import 'package:lastest_time/widgets/add_dialog.dart';
 import 'package:lastest_time/widgets/pinned_list.dart';
-import 'package:lastest_time/widgets/search_box.dart';
 
 class PinnedPage extends StatelessWidget {
   const PinnedPage({super.key});
@@ -44,12 +43,8 @@ class PinnedPage extends StatelessWidget {
                 ),
                 body: const Stack(children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 10, left: 17.0, right: 17.0),
-                    child: SizedBox(height: 70, child: SearchBox()),
-                  ),
-                  Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 80, horizontal: 20),
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       child: PinnedList()),
                   Positioned(
                     right: 16,

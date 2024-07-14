@@ -1,3 +1,5 @@
+import 'package:lastest_time/models/last_time_item.dart';
+
 sealed class LastestTimeEvent {}
 
 class LoadEvent extends LastestTimeEvent {}
@@ -31,6 +33,12 @@ class DeleteEvent extends LastestTimeEvent {
 class PinEvent extends LastestTimeEvent {
   final int id;
   PinEvent(this.id);
+}
+
+class EditEvent extends LastestTimeEvent {
+  final LastestTimeItem editedItem;
+
+  EditEvent({required this.editedItem});
 }
 
 class AddEvent extends LastestTimeEvent {
