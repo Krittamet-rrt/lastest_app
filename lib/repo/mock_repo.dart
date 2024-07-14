@@ -10,28 +10,24 @@ class MockRepo extends Repo {
         'ซักผ้า',
         7,
         null,
-        false,
       ),
       const LastestTimeItem(
         2,
         'ถูบ้าน',
         10,
         null,
-        false,
       ),
       const LastestTimeItem(
         3,
         'เปลี่ยนผ้าปูที่นอน',
         14,
         null,
-        false,
       ),
       const LastestTimeItem(
         4,
         'จ่ายค่าโทรศัพท์',
         2,
         null,
-        false,
       ),
     ];
   }

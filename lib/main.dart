@@ -54,7 +54,7 @@ class MainApp extends StatelessWidget {
                   IconButton(
                     iconSize: 30,
                     onPressed: () {},
-                    icon: const Icon(Icons.check),
+                    icon: const Icon(Icons.push_pin),
                     color: Colors.blue,
                   ),
                 ],

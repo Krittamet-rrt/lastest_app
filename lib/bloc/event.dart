@@ -28,6 +28,11 @@ class DeleteEvent extends LastestTimeEvent {
   DeleteEvent(this.id);
 }
 
+class PinEvent extends LastestTimeEvent {
+  final int id;
+  PinEvent(this.id);
+}
+
 class AddEvent extends LastestTimeEvent {
   final String name;
   final int cycleExp;

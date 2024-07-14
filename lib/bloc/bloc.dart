@@ -11,6 +11,7 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
     on<CheckEvent>(_onCheck);
     on<UncheckEvent>(_onUncheck);
     on<AddEvent>(_onAdd);
+    on<PinEvent>(_onPinned);
     on<DeleteEvent>(_onDelete);
   }
 
@@ -25,8 +26,8 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
       final currentState = state as ReadyState;
       final updatedItems = currentState.items.map((item) {
         if (item.id == event.id) {
-          return LastestTimeItem(item.id, item.name, item.cycleExp,
-              DateTime.now(), item.isChecked == true);
+          return LastestTimeItem(
+              item.id, item.name, item.cycleExp, DateTime.now(), item.isPinned);
         }
         return item;
       }).toList();
@@ -42,7 +43,7 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
       final updatedItems = currentState.items.map((item) {
         if (item.id == event.id) {
           return LastestTimeItem(
-              item.id, item.name, item.cycleExp, null, item.isChecked == false);
+              item.id, item.name, item.cycleExp, null, item.isPinned);
         }
         return item;
       }).toList();
@@ -59,6 +60,20 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
           event.cycleExp, null, false);
       final updatedItems = currentState.items + [newItem];
       updatedItems.sort((a, b) => a.cycleExp.compareTo(b.cycleExp));
+      emit(ReadyState(items: updatedItems));
+    }
+  }
+
+  void _onPinned(PinEvent event, Emitter<LastestTimeState> emit) async {
+    if (state is ReadyState) {
+      final currentState = state as ReadyState;
+      final updatedItems = currentState.items.map((item) {
+        if (item.id == event.id) {
+          return LastestTimeItem(
+              item.id, item.name, item.cycleExp, item.markTime, !item.isPinned);
+        }
+        return item;
+      }).toList();
       emit(ReadyState(items: updatedItems));
     }
   }

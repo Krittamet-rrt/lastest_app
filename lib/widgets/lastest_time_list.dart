@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
 import 'package:lastest_time/widgets/add_dialog.dart';
@@ -12,65 +13,24 @@ class LastestTimeList extends StatelessWidget {
     final items = context.select((LastestTimeBloc bloc) => bloc.state.items);
     return LimitedBox(
         child: items.isEmpty
-            ? const SizedBox(
-                height: 200,
-                child: Text(
-                  'Nothing to do please add an item',
-                  textAlign: TextAlign.center,
-                ))
+            ? const Scaffold(
+                body: Center(
+                  child: Text(
+                    'Nothing to do please add an item',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              )
             : ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 3.0),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: ListTile(
-                        leading: Checkbox(
-                          value: items[index].markTime != null,
-                          onChanged: (bool? value) {
-                            context.read<LastestTimeBloc>().add(value == true
-                                ? CheckEvent(items[index].id)
-                                : UncheckEvent(items[index].id));
-                          },
-                          fillColor: WidgetStateProperty.resolveWith<Color>(
-                              (Set<WidgetState> states) {
-                            if (states.contains(WidgetState.selected)) {
-                              return Colors
-                                  .blue; // Use your desired color when checked
-                            }
-                            return Colors
-                                .transparent; // Use your desired color when unchecked
-                          }),
-                        ),
-                        title: Text(
-                          items[index].name,
-                          style: GoogleFonts.prompt(
-                              fontSize: 20,
-                              color: Colors.black,
-                              decoration: items[index].markTime != null
-                                  ? TextDecoration.lineThrough
-                                  : TextDecoration.none),
-                        ),
-                        subtitle: items[index].markTime != null
-                            ? Text(
-                                'Done',
-                                style: GoogleFonts.prompt(
-                                    fontSize: 13, color: Colors.green),
-                              )
-                            : Text(
-                                '${items[index].cycleExp.toString()} day left',
-                                style: GoogleFonts.prompt(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete),
-                          color: Colors.red,
-                          onPressed: () {
+                    child: Slidable(
+                      endActionPane:
+                          ActionPane(motion: ScrollMotion(), children: [
+                        SlidableAction(
+                          onPressed: (context) {
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -107,6 +67,65 @@ class LastestTimeList extends StatelessWidget {
                                   );
                                 });
                           },
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: 'DELETE',
+                        )
+                      ]),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: ListTile(
+                          leading: Checkbox(
+                            value: items[index].markTime != null,
+                            onChanged: (bool? value) {
+                              context.read<LastestTimeBloc>().add(value == true
+                                  ? CheckEvent(items[index].id)
+                                  : UncheckEvent(items[index].id));
+                            },
+                            fillColor: WidgetStateProperty.resolveWith<Color>(
+                                (Set<WidgetState> states) {
+                              if (states.contains(WidgetState.selected)) {
+                                return Colors
+                                    .blue; // Use your desired color when checked
+                              }
+                              return Colors
+                                  .transparent; // Use your desired color when unchecked
+                            }),
+                          ),
+                          title: Text(
+                            items[index].name,
+                            style: GoogleFonts.prompt(
+                                fontSize: 20,
+                                color: Colors.black,
+                                decoration: items[index].markTime != null
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none),
+                          ),
+                          subtitle: items[index].markTime != null
+                              ? Text(
+                                  'Done',
+                                  style: GoogleFonts.prompt(
+                                      fontSize: 13, color: Colors.green),
+                                )
+                              : Text(
+                                  '${items[index].cycleExp.toString()} day left',
+                                  style: GoogleFonts.prompt(
+                                    fontSize: 13,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.push_pin),
+                            color: Colors.blue,
+                            onPressed: () {
+                              context
+                                  .read<LastestTimeBloc>()
+                                  .add(PinEvent(items[index].id));
+                            },
+                          ),
                         ),
                       ),
                     ),

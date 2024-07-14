@@ -5,10 +5,10 @@ class LastestTimeItem extends Equatable {
   final String name;
   final int cycleExp;
   final DateTime? markTime;
-  final bool isChecked;
+  final bool isPinned;
 
-  const LastestTimeItem(
-      this.id, this.name, this.cycleExp, this.markTime, this.isChecked);
+  const LastestTimeItem(this.id, this.name, this.cycleExp, this.markTime,
+      {this.isPinned = false});
 
   @override
   List<Object?> get props => [id, markTime];
