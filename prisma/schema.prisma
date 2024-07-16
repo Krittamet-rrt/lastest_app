@@ -5,10 +5,21 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "dart run orm"
+  provider   = "dart run orm"
+  output     = "../lib/_generated_prisma_client"
+  engineType = "flutter"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./db.sqlite"
+}
+
+// create model for this project
+model User {
+  id       Int      @id @default(autoincrement())
+  name     String
+  cycleExp Int
+  markTime DateTime
+  isPinned Boolean
 }
