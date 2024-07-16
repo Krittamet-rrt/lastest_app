@@ -193,6 +193,40 @@ class StringFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
+class NestedBoolFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const NestedBoolFilter({
+    this.equals,
+    this.not,
+  });
+
+  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
+
+  final _i1.PrismaUnion<bool, _i2.NestedBoolFilter>? not;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'equals': equals,
+        'not': not,
+      };
+}
+
+class BoolFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const BoolFilter({
+    this.equals,
+    this.not,
+  });
+
+  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
+
+  final _i1.PrismaUnion<bool, _i2.NestedBoolFilter>? not;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'equals': equals,
+        'not': not,
+      };
+}
+
 class NestedDateTimeNullableFilter
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const NestedDateTimeNullableFilter({
@@ -281,40 +315,6 @@ class DateTimeNullableFilter
       };
 }
 
-class NestedBoolFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const NestedBoolFilter({
-    this.equals,
-    this.not,
-  });
-
-  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
-
-  final _i1.PrismaUnion<bool, _i2.NestedBoolFilter>? not;
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'equals': equals,
-        'not': not,
-      };
-}
-
-class BoolFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const BoolFilter({
-    this.equals,
-    this.not,
-  });
-
-  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
-
-  final _i1.PrismaUnion<bool, _i2.NestedBoolFilter>? not;
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'equals': equals,
-        'not': not,
-      };
-}
-
 class LastestTimeItemWhereInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const LastestTimeItemWhereInput({
@@ -323,6 +323,7 @@ class LastestTimeItemWhereInput
     this.NOT,
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -340,6 +341,8 @@ class LastestTimeItemWhereInput
 
   final _i1.PrismaUnion<_i2.StringFilter, String>? name;
 
+  final _i1.PrismaUnion<_i2.BoolFilter, bool>? isChecked;
+
   final _i1.PrismaUnion<_i2.IntFilter, int>? cycleExp;
 
   final _i1.PrismaUnion<_i2.DateTimeNullableFilter,
@@ -354,6 +357,7 @@ class LastestTimeItemWhereInput
         'NOT': NOT,
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -368,6 +372,7 @@ class LastestTimeItemWhereUniqueInput
     this.OR,
     this.NOT,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -385,6 +390,8 @@ class LastestTimeItemWhereUniqueInput
 
   final _i1.PrismaUnion<_i2.StringFilter, String>? name;
 
+  final _i1.PrismaUnion<_i2.BoolFilter, bool>? isChecked;
+
   final _i1.PrismaUnion<_i2.IntFilter, int>? cycleExp;
 
   final _i1.PrismaUnion<_i2.DateTimeNullableFilter,
@@ -399,6 +406,7 @@ class LastestTimeItemWhereUniqueInput
         'OR': OR,
         'NOT': NOT,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -410,6 +418,7 @@ class LastestTimeItemSelect
   const LastestTimeItemSelect({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -418,6 +427,8 @@ class LastestTimeItemSelect
   final bool? id;
 
   final bool? name;
+
+  final bool? isChecked;
 
   final bool? cycleExp;
 
@@ -429,6 +440,7 @@ class LastestTimeItemSelect
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -477,6 +489,7 @@ class LastestTimeItemOrderByWithRelationInput
   const LastestTimeItemOrderByWithRelationInput({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -485,6 +498,8 @@ class LastestTimeItemOrderByWithRelationInput
   final _i2.SortOrder? id;
 
   final _i2.SortOrder? name;
+
+  final _i2.SortOrder? isChecked;
 
   final _i2.SortOrder? cycleExp;
 
@@ -496,6 +511,7 @@ class LastestTimeItemOrderByWithRelationInput
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -505,6 +521,7 @@ class LastestTimeItemOrderByWithRelationInput
 enum LastestTimeItemScalar<T> implements _i1.PrismaEnum, _i1.Reference<T> {
   id<int>('id', 'LastestTimeItem'),
   name$<String>('name', 'LastestTimeItem'),
+  isChecked<bool>('isChecked', 'LastestTimeItem'),
   cycleExp<int>('cycleExp', 'LastestTimeItem'),
   markTime<DateTime>('markTime', 'LastestTimeItem'),
   isPinned<bool>('isPinned', 'LastestTimeItem');
@@ -525,22 +542,26 @@ class LastestTimeItemCreateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const LastestTimeItemCreateInput({
     required this.name,
+    this.isChecked,
     required this.cycleExp,
     this.markTime,
-    required this.isPinned,
+    this.isPinned,
   });
 
   final String name;
+
+  final bool? isChecked;
 
   final int cycleExp;
 
   final _i1.PrismaUnion<DateTime, _i1.PrismaNull>? markTime;
 
-  final bool isPinned;
+  final bool? isPinned;
 
   @override
   Map<String, dynamic> toJson() => {
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -552,25 +573,29 @@ class LastestTimeItemUncheckedCreateInput
   const LastestTimeItemUncheckedCreateInput({
     this.id,
     required this.name,
+    this.isChecked,
     required this.cycleExp,
     this.markTime,
-    required this.isPinned,
+    this.isPinned,
   });
 
   final int? id;
 
   final String name;
 
+  final bool? isChecked;
+
   final int cycleExp;
 
   final _i1.PrismaUnion<DateTime, _i1.PrismaNull>? markTime;
 
-  final bool isPinned;
+  final bool? isPinned;
 
   @override
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -593,25 +618,29 @@ class LastestTimeItemCreateManyInput
   const LastestTimeItemCreateManyInput({
     this.id,
     required this.name,
+    this.isChecked,
     required this.cycleExp,
     this.markTime,
-    required this.isPinned,
+    this.isPinned,
   });
 
   final int? id;
 
   final String name;
 
+  final bool? isChecked;
+
   final int cycleExp;
 
   final _i1.PrismaUnion<DateTime, _i1.PrismaNull>? markTime;
 
-  final bool isPinned;
+  final bool? isPinned;
 
   @override
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -623,6 +652,7 @@ class CreateManyLastestTimeItemAndReturnOutputTypeSelect
   const CreateManyLastestTimeItemAndReturnOutputTypeSelect({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -631,6 +661,8 @@ class CreateManyLastestTimeItemAndReturnOutputTypeSelect
   final bool? id;
 
   final bool? name;
+
+  final bool? isChecked;
 
   final bool? cycleExp;
 
@@ -642,6 +674,7 @@ class CreateManyLastestTimeItemAndReturnOutputTypeSelect
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -653,6 +686,16 @@ class StringFieldUpdateOperationsInput
   const StringFieldUpdateOperationsInput({this.set});
 
   final String? set;
+
+  @override
+  Map<String, dynamic> toJson() => {'set': set};
+}
+
+class BoolFieldUpdateOperationsInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const BoolFieldUpdateOperationsInput({this.set});
+
+  final bool? set;
 
   @override
   Map<String, dynamic> toJson() => {'set': set};
@@ -698,26 +741,19 @@ class NullableDateTimeFieldUpdateOperationsInput
   Map<String, dynamic> toJson() => {'set': set};
 }
 
-class BoolFieldUpdateOperationsInput
-    implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const BoolFieldUpdateOperationsInput({this.set});
-
-  final bool? set;
-
-  @override
-  Map<String, dynamic> toJson() => {'set': set};
-}
-
 class LastestTimeItemUpdateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const LastestTimeItemUpdateInput({
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
   });
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? name;
+
+  final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isChecked;
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
@@ -731,6 +767,7 @@ class LastestTimeItemUpdateInput
   @override
   Map<String, dynamic> toJson() => {
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -742,6 +779,7 @@ class LastestTimeItemUncheckedUpdateInput
   const LastestTimeItemUncheckedUpdateInput({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -750,6 +788,8 @@ class LastestTimeItemUncheckedUpdateInput
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? id;
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? name;
+
+  final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isChecked;
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
@@ -764,6 +804,7 @@ class LastestTimeItemUncheckedUpdateInput
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -774,12 +815,15 @@ class LastestTimeItemUpdateManyMutationInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const LastestTimeItemUpdateManyMutationInput({
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
   });
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? name;
+
+  final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isChecked;
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
@@ -793,6 +837,7 @@ class LastestTimeItemUpdateManyMutationInput
   @override
   Map<String, dynamic> toJson() => {
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -804,6 +849,7 @@ class LastestTimeItemUncheckedUpdateManyInput
   const LastestTimeItemUncheckedUpdateManyInput({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -812,6 +858,8 @@ class LastestTimeItemUncheckedUpdateManyInput
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? id;
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? name;
+
+  final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isChecked;
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
@@ -826,6 +874,7 @@ class LastestTimeItemUncheckedUpdateManyInput
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -836,6 +885,7 @@ class LastestTimeItemCountAggregateOutputType {
   const LastestTimeItemCountAggregateOutputType({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -846,6 +896,7 @@ class LastestTimeItemCountAggregateOutputType {
       LastestTimeItemCountAggregateOutputType(
         id: json['id'],
         name: json['name'],
+        isChecked: json['isChecked'],
         cycleExp: json['cycleExp'],
         markTime: json['markTime'],
         isPinned: json['isPinned'],
@@ -855,6 +906,8 @@ class LastestTimeItemCountAggregateOutputType {
   final int? id;
 
   final int? name;
+
+  final int? isChecked;
 
   final int? cycleExp;
 
@@ -867,6 +920,7 @@ class LastestTimeItemCountAggregateOutputType {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -922,6 +976,7 @@ class LastestTimeItemMinAggregateOutputType {
   const LastestTimeItemMinAggregateOutputType({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -931,6 +986,7 @@ class LastestTimeItemMinAggregateOutputType {
       LastestTimeItemMinAggregateOutputType(
         id: json['id'],
         name: json['name'],
+        isChecked: json['isChecked'],
         cycleExp: json['cycleExp'],
         markTime: switch (json['markTime']) {
           DateTime value => value,
@@ -944,6 +1000,8 @@ class LastestTimeItemMinAggregateOutputType {
 
   final String? name;
 
+  final bool? isChecked;
+
   final int? cycleExp;
 
   final DateTime? markTime;
@@ -953,6 +1011,7 @@ class LastestTimeItemMinAggregateOutputType {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime?.toIso8601String(),
         'isPinned': isPinned,
@@ -963,6 +1022,7 @@ class LastestTimeItemMaxAggregateOutputType {
   const LastestTimeItemMaxAggregateOutputType({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -972,6 +1032,7 @@ class LastestTimeItemMaxAggregateOutputType {
       LastestTimeItemMaxAggregateOutputType(
         id: json['id'],
         name: json['name'],
+        isChecked: json['isChecked'],
         cycleExp: json['cycleExp'],
         markTime: switch (json['markTime']) {
           DateTime value => value,
@@ -985,6 +1046,8 @@ class LastestTimeItemMaxAggregateOutputType {
 
   final String? name;
 
+  final bool? isChecked;
+
   final int? cycleExp;
 
   final DateTime? markTime;
@@ -994,6 +1057,7 @@ class LastestTimeItemMaxAggregateOutputType {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime?.toIso8601String(),
         'isPinned': isPinned,
@@ -1004,6 +1068,7 @@ class LastestTimeItemGroupByOutputType {
   const LastestTimeItemGroupByOutputType({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1018,6 +1083,7 @@ class LastestTimeItemGroupByOutputType {
       LastestTimeItemGroupByOutputType(
         id: json['id'],
         name: json['name'],
+        isChecked: json['isChecked'],
         cycleExp: json['cycleExp'],
         markTime: switch (json['markTime']) {
           DateTime value => value,
@@ -1047,6 +1113,8 @@ class LastestTimeItemGroupByOutputType {
 
   final String? name;
 
+  final bool? isChecked;
+
   final int? cycleExp;
 
   final DateTime? markTime;
@@ -1066,6 +1134,7 @@ class LastestTimeItemGroupByOutputType {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime?.toIso8601String(),
         'isPinned': isPinned,
@@ -1082,6 +1151,7 @@ class LastestTimeItemCountOrderByAggregateInput
   const LastestTimeItemCountOrderByAggregateInput({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1090,6 +1160,8 @@ class LastestTimeItemCountOrderByAggregateInput
   final _i2.SortOrder? id;
 
   final _i2.SortOrder? name;
+
+  final _i2.SortOrder? isChecked;
 
   final _i2.SortOrder? cycleExp;
 
@@ -1101,6 +1173,7 @@ class LastestTimeItemCountOrderByAggregateInput
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -1130,6 +1203,7 @@ class LastestTimeItemMaxOrderByAggregateInput
   const LastestTimeItemMaxOrderByAggregateInput({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1138,6 +1212,8 @@ class LastestTimeItemMaxOrderByAggregateInput
   final _i2.SortOrder? id;
 
   final _i2.SortOrder? name;
+
+  final _i2.SortOrder? isChecked;
 
   final _i2.SortOrder? cycleExp;
 
@@ -1149,6 +1225,7 @@ class LastestTimeItemMaxOrderByAggregateInput
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -1160,6 +1237,7 @@ class LastestTimeItemMinOrderByAggregateInput
   const LastestTimeItemMinOrderByAggregateInput({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1168,6 +1246,8 @@ class LastestTimeItemMinOrderByAggregateInput
   final _i2.SortOrder? id;
 
   final _i2.SortOrder? name;
+
+  final _i2.SortOrder? isChecked;
 
   final _i2.SortOrder? cycleExp;
 
@@ -1179,6 +1259,7 @@ class LastestTimeItemMinOrderByAggregateInput
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -1208,6 +1289,7 @@ class LastestTimeItemOrderByWithAggregationInput
   const LastestTimeItemOrderByWithAggregationInput({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1221,6 +1303,8 @@ class LastestTimeItemOrderByWithAggregationInput
   final _i2.SortOrder? id;
 
   final _i2.SortOrder? name;
+
+  final _i2.SortOrder? isChecked;
 
   final _i2.SortOrder? cycleExp;
 
@@ -1242,6 +1326,7 @@ class LastestTimeItemOrderByWithAggregationInput
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -1550,6 +1635,66 @@ class StringWithAggregatesFilter
       };
 }
 
+class NestedBoolWithAggregatesFilter
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const NestedBoolWithAggregatesFilter({
+    this.equals,
+    this.not,
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
+
+  final _i1.PrismaUnion<bool, _i2.NestedBoolWithAggregatesFilter>? not;
+
+  final _i2.NestedIntFilter? $count;
+
+  final _i2.NestedBoolFilter? $min;
+
+  final _i2.NestedBoolFilter? $max;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'equals': equals,
+        'not': not,
+        '_count': $count,
+        '_min': $min,
+        '_max': $max,
+      };
+}
+
+class BoolWithAggregatesFilter
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const BoolWithAggregatesFilter({
+    this.equals,
+    this.not,
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
+
+  final _i1.PrismaUnion<bool, _i2.NestedBoolWithAggregatesFilter>? not;
+
+  final _i2.NestedIntFilter? $count;
+
+  final _i2.NestedBoolFilter? $min;
+
+  final _i2.NestedBoolFilter? $max;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'equals': equals,
+        'not': not,
+        '_count': $count,
+        '_min': $min,
+        '_max': $max,
+      };
+}
+
 class NestedIntNullableFilter
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const NestedIntNullableFilter({
@@ -1711,66 +1856,6 @@ class DateTimeNullableWithAggregatesFilter
       };
 }
 
-class NestedBoolWithAggregatesFilter
-    implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const NestedBoolWithAggregatesFilter({
-    this.equals,
-    this.not,
-    this.$count,
-    this.$min,
-    this.$max,
-  });
-
-  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
-
-  final _i1.PrismaUnion<bool, _i2.NestedBoolWithAggregatesFilter>? not;
-
-  final _i2.NestedIntFilter? $count;
-
-  final _i2.NestedBoolFilter? $min;
-
-  final _i2.NestedBoolFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'equals': equals,
-        'not': not,
-        '_count': $count,
-        '_min': $min,
-        '_max': $max,
-      };
-}
-
-class BoolWithAggregatesFilter
-    implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const BoolWithAggregatesFilter({
-    this.equals,
-    this.not,
-    this.$count,
-    this.$min,
-    this.$max,
-  });
-
-  final _i1.PrismaUnion<bool, _i1.Reference<bool>>? equals;
-
-  final _i1.PrismaUnion<bool, _i2.NestedBoolWithAggregatesFilter>? not;
-
-  final _i2.NestedIntFilter? $count;
-
-  final _i2.NestedBoolFilter? $min;
-
-  final _i2.NestedBoolFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'equals': equals,
-        'not': not,
-        '_count': $count,
-        '_min': $min,
-        '_max': $max,
-      };
-}
-
 class LastestTimeItemScalarWhereWithAggregatesInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const LastestTimeItemScalarWhereWithAggregatesInput({
@@ -1779,6 +1864,7 @@ class LastestTimeItemScalarWhereWithAggregatesInput
     this.NOT,
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1796,6 +1882,8 @@ class LastestTimeItemScalarWhereWithAggregatesInput
 
   final _i1.PrismaUnion<_i2.StringWithAggregatesFilter, String>? name;
 
+  final _i1.PrismaUnion<_i2.BoolWithAggregatesFilter, bool>? isChecked;
+
   final _i1.PrismaUnion<_i2.IntWithAggregatesFilter, int>? cycleExp;
 
   final _i1.PrismaUnion<_i2.DateTimeNullableWithAggregatesFilter,
@@ -1810,6 +1898,7 @@ class LastestTimeItemScalarWhereWithAggregatesInput
         'NOT': NOT,
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -1821,6 +1910,7 @@ class LastestTimeItemCountAggregateOutputTypeSelect
   const LastestTimeItemCountAggregateOutputTypeSelect({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1830,6 +1920,8 @@ class LastestTimeItemCountAggregateOutputTypeSelect
   final bool? id;
 
   final bool? name;
+
+  final bool? isChecked;
 
   final bool? cycleExp;
 
@@ -1843,6 +1935,7 @@ class LastestTimeItemCountAggregateOutputTypeSelect
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -1921,6 +2014,7 @@ class LastestTimeItemMinAggregateOutputTypeSelect
   const LastestTimeItemMinAggregateOutputTypeSelect({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1929,6 +2023,8 @@ class LastestTimeItemMinAggregateOutputTypeSelect
   final bool? id;
 
   final bool? name;
+
+  final bool? isChecked;
 
   final bool? cycleExp;
 
@@ -1940,6 +2036,7 @@ class LastestTimeItemMinAggregateOutputTypeSelect
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -1961,6 +2058,7 @@ class LastestTimeItemMaxAggregateOutputTypeSelect
   const LastestTimeItemMaxAggregateOutputTypeSelect({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -1969,6 +2067,8 @@ class LastestTimeItemMaxAggregateOutputTypeSelect
   final bool? id;
 
   final bool? name;
+
+  final bool? isChecked;
 
   final bool? cycleExp;
 
@@ -1980,6 +2080,7 @@ class LastestTimeItemMaxAggregateOutputTypeSelect
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,
@@ -2001,6 +2102,7 @@ class LastestTimeItemGroupByOutputTypeSelect
   const LastestTimeItemGroupByOutputTypeSelect({
     this.id,
     this.name,
+    this.isChecked,
     this.cycleExp,
     this.markTime,
     this.isPinned,
@@ -2014,6 +2116,8 @@ class LastestTimeItemGroupByOutputTypeSelect
   final bool? id;
 
   final bool? name;
+
+  final bool? isChecked;
 
   final bool? cycleExp;
 
@@ -2040,6 +2144,7 @@ class LastestTimeItemGroupByOutputTypeSelect
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
+        'isChecked': isChecked,
         'cycleExp': cycleExp,
         'markTime': markTime,
         'isPinned': isPinned,

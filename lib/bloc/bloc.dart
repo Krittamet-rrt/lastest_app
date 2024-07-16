@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:lastest_time/_generated_prisma_client/prisma.dart';
 import 'package:lastest_time/bloc/event.dart';
 import 'package:lastest_time/bloc/state.dart';
-import 'package:lastest_time/models/last_time_item.dart';
 import 'package:lastest_time/prisma.dart';
 import 'package:lastest_time/repo/repo.dart';
 import 'package:orm/orm.dart';
@@ -12,7 +11,6 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
   LastestTimeBloc(this.repo) : super(LoadingState()) {
     on<LoadEvent>(_onLoaded);
     on<CheckEvent>(_onCheck);
-    on<UncheckEvent>(_onUncheck);
     on<AddEvent>(_onAdd);
     on<PinEvent>(_onPinned);
     on<DeleteEvent>(_onDelete);
@@ -31,34 +29,26 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
   }
 
   void _onCheck(CheckEvent event, Emitter<LastestTimeState> emit) async {
+    final DateTime nowTime =
+        DateTime.now().toUtc().add(const Duration(hours: 7));
     if (state is ReadyState) {
-      final currentState = state as ReadyState;
-      final updatedItems = currentState.items.map((item) {
-        if (item.id == event.id) {
-          return LastestTimeItem(
-              item.id, item.name, item.cycleExp, DateTime.now(), item.isPinned);
+      await prisma.lastestTimeItem.update(
+        where: LastestTimeItemWhereUniqueInput(id: event.id),
+        data: PrismaUnion.$1(
+          LastestTimeItemUpdateInput(
+            isChecked: PrismaUnion.$1(event.isChecked),
+            markTime: PrismaUnion.$1(nowTime),
+          ),
+        ),
+      );
+      final items = await repo.load();
+      items.sort((a, b) {
+        if (a.isPinned != b.isPinned) {
+          return a.isPinned ? -1 : 1;
         }
-        return item;
-      }).toList();
-
-      await repo.save(updatedItems);
-      emit(ReadyState(items: updatedItems));
-    }
-  }
-
-  void _onUncheck(UncheckEvent event, Emitter<LastestTimeState> emit) async {
-    if (state is ReadyState) {
-      final currentState = state as ReadyState;
-      final updatedItems = currentState.items.map((item) {
-        if (item.id == event.id) {
-          return LastestTimeItem(
-              item.id, item.name, item.cycleExp, null, item.isPinned);
-        }
-        return item;
-      }).toList();
-
-      await repo.save(updatedItems);
-      emit(ReadyState(items: updatedItems));
+        return a.cycleExp.compareTo(b.cycleExp);
+      });
+      emit(ReadyState(items: items));
     }
   }
 
@@ -70,6 +60,7 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
           LastestTimeItemCreateInput(
               name: event.name,
               cycleExp: event.cycleExp,
+              isChecked: false,
               markTime: null,
               isPinned: false),
         ),

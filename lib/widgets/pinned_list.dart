@@ -99,6 +99,7 @@ class PinnedList extends StatelessWidget {
                                           final editedItem = LastestTimeItem(
                                             items[index].id,
                                             _nameController.text,
+                                            items[index].isChecked,
                                             int.parse(_cycleController.text),
                                             items[index].markTime,
                                             items[index].isPinned,
@@ -169,11 +170,11 @@ class PinnedList extends StatelessWidget {
                         ),
                         child: ListTile(
                           leading: Checkbox(
-                            value: items[index].markTime != null,
+                            value: items[index].isChecked,
                             onChanged: (bool? value) {
                               context.read<LastestTimeBloc>().add(value == true
-                                  ? CheckEvent(items[index].id)
-                                  : UncheckEvent(items[index].id));
+                                  ? CheckEvent(items[index].id, true)
+                                  : CheckEvent(items[index].id, false));
                             },
                             fillColor: WidgetStateProperty.resolveWith<Color>(
                                 (Set<WidgetState> states) {
@@ -190,13 +191,13 @@ class PinnedList extends StatelessWidget {
                             style: GoogleFonts.prompt(
                                 fontSize: 20,
                                 color: Colors.black,
-                                decoration: items[index].markTime != null
+                                decoration: items[index].isChecked == true
                                     ? TextDecoration.lineThrough
                                     : TextDecoration.none),
                           ),
-                          subtitle: items[index].markTime != null
+                          subtitle: items[index].isChecked == true
                               ? Text(
-                                  'Done, at ${DateFormat('dd/MM/yyyy hh:mm').format(items[index].markTime!)}',
+                                  'Done, at ${DateFormat('dd/MM/yyyy kk:mm').format(items[index].markTime!)}',
                                   style: GoogleFonts.prompt(
                                       fontSize: 13, color: Colors.green),
                                 )

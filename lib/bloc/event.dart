@@ -17,12 +17,8 @@ class SearchEvent extends LastestTimeEvent {
 
 class CheckEvent extends LastestTimeEvent {
   final int id;
-  CheckEvent(this.id);
-}
-
-class UncheckEvent extends LastestTimeEvent {
-  final int id;
-  UncheckEvent(this.id);
+  final bool isChecked;
+  CheckEvent(this.id, this.isChecked);
 }
 
 class DeleteEvent extends LastestTimeEvent {
