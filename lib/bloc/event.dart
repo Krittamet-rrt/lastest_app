@@ -36,9 +36,10 @@ class PinEvent extends LastestTimeEvent {
 }
 
 class EditEvent extends LastestTimeEvent {
+  final int id;
   final LastestTimeItem editedItem;
 
-  EditEvent({required this.editedItem});
+  EditEvent({required this.id, required this.editedItem});
 }
 
 class AddEvent extends LastestTimeEvent {

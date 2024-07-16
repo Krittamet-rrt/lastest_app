@@ -22,12 +22,11 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
   void _onLoaded(LoadEvent event, Emitter<LastestTimeState> emit) async {
     final items = await repo.load();
     items.sort((a, b) {
-      if (a.isPinned == b.isPinned) {
-        return 0;
+      if (a.isPinned != b.isPinned) {
+        return a.isPinned ? -1 : 1;
       }
-      return a.isPinned ? -1 : 1;
+      return a.cycleExp.compareTo(b.cycleExp);
     });
-    items.sort((a, b) => a.cycleExp.compareTo(b.cycleExp));
     emit(ReadyState(items: items));
   }
 
@@ -115,18 +114,23 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
 
   void _onEdit(EditEvent event, Emitter<LastestTimeState> emit) async {
     if (state is ReadyState) {
-      final currentState = state as ReadyState;
-      final updatedItems = currentState.items.map((item) {
-        return item.id == event.editedItem.id ? event.editedItem : item;
-      }).toList();
-      updatedItems.sort((a, b) {
+      await prisma.lastestTimeItem.update(
+        where: LastestTimeItemWhereUniqueInput(id: event.id),
+        data: PrismaUnion.$1(
+          LastestTimeItemUpdateInput(
+            name: PrismaUnion.$1(event.editedItem.name),
+            cycleExp: PrismaUnion.$1(event.editedItem.cycleExp),
+          ),
+        ),
+      );
+      final items = await repo.load();
+      items.sort((a, b) {
         if (a.isPinned != b.isPinned) {
           return a.isPinned ? -1 : 1;
         }
         return a.cycleExp.compareTo(b.cycleExp);
       });
-      await repo.save(updatedItems);
-      emit(ReadyState(items: updatedItems));
+      emit(ReadyState(items: items));
     }
   }
 }

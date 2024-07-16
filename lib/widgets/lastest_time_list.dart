@@ -108,6 +108,7 @@ class LastestTimeList extends StatelessWidget {
                                             );
                                             context.read<LastestTimeBloc>().add(
                                                 EditEvent(
+                                                    id: items[index].id,
                                                     editedItem: editedItem));
                                             Navigator.of(context).pop();
                                           },
