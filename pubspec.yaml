@@ -16,6 +16,7 @@ dependencies:
   google_fonts: ^6.2.1
   intl: ^0.19.0
   orm: ^5.0.4
+  orm_flutter: ^0.1.2
 
 dev_dependencies:
   flutter_test:

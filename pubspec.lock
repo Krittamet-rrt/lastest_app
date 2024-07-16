@@ -331,6 +331,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.4"
+  orm_flutter:
+    dependency: "direct main"
+    description:
+      name: orm_flutter
+      sha256: b71eca34bbbb019ee2e0e220c367415c735ff47e52d2261714b515f5754d6370
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   package_config:
     dependency: transitive
     description:
