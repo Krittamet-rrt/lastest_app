@@ -82,23 +82,23 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
 
   void _onPinned(PinEvent event, Emitter<LastestTimeState> emit) async {
     if (state is ReadyState) {
-      final currentState = state as ReadyState;
-      final updatedItems = currentState.items.map((item) {
-        if (item.id == event.id) {
-          return LastestTimeItem(
-              item.id, item.name, item.cycleExp, item.markTime, !item.isPinned);
-        }
-        return item;
-      }).toList();
-
-      updatedItems.sort((a, b) {
+      await prisma.lastestTimeItem.update(
+        where: LastestTimeItemWhereUniqueInput(id: event.id),
+        data: PrismaUnion.$1(
+          LastestTimeItemUpdateInput(
+            isPinned: PrismaUnion.$1(event.isPinned),
+          ),
+        ),
+      );
+      final items = await repo.load();
+      items.sort((a, b) {
         if (a.isPinned != b.isPinned) {
           return a.isPinned ? -1 : 1;
         }
         return a.cycleExp.compareTo(b.cycleExp);
       });
 
-      emit(ReadyState(items: updatedItems));
+      emit(ReadyState(items: items));
     }
   }
 

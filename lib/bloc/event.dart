@@ -32,7 +32,8 @@ class DeleteEvent extends LastestTimeEvent {
 
 class PinEvent extends LastestTimeEvent {
   final int id;
-  PinEvent(this.id);
+  final bool isPinned;
+  PinEvent(this.id, this.isPinned);
 }
 
 class EditEvent extends LastestTimeEvent {

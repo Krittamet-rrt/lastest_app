@@ -213,9 +213,10 @@ class PinnedList extends StatelessWidget {
                                 ? Colors.blue
                                 : Colors.black,
                             onPressed: () {
-                              context
-                                  .read<LastestTimeBloc>()
-                                  .add(PinEvent(items[index].id));
+                              context.read<LastestTimeBloc>().add(PinEvent(
+                                    items[index].id,
+                                    items[index].isPinned,
+                                  ));
                             },
                           ),
                         ),
