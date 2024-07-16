@@ -81,8 +81,9 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
 
   void _onDelete(DeleteEvent event, Emitter<LastestTimeState> emit) async {
     if (state is ReadyState) {
-      await prisma.lastestTimeItem
-          .delete(where: LastestTimeItemWhereUniqueInput(id: event.id));
+      await prisma.lastestTimeItem.delete(
+        where: LastestTimeItemWhereUniqueInput(id: event.id),
+      );
 
       emit(LoadingState());
       add(LoadEvent());
