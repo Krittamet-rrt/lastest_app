@@ -1,8 +1,11 @@
 import 'package:bloc/bloc.dart';
+import 'package:lastest_time/_generated_prisma_client/prisma.dart';
 import 'package:lastest_time/bloc/event.dart';
 import 'package:lastest_time/bloc/state.dart';
 import 'package:lastest_time/models/last_time_item.dart';
+import 'package:lastest_time/prisma.dart';
 import 'package:lastest_time/repo/repo.dart';
+import 'package:orm/orm.dart';
 
 class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
   final Repo repo;
@@ -63,11 +66,18 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
   void _onAdd(AddEvent event, Emitter<LastestTimeState> emit) async {
     if (state is ReadyState) {
       final currentState = state as ReadyState;
-      final newItem = LastestTimeItem(currentState.items.length + 1, event.name,
-          event.cycleExp, null, false);
-      final updatedItems = currentState.items + [newItem];
-      updatedItems.sort((a, b) => a.cycleExp.compareTo(b.cycleExp));
-      emit(ReadyState(items: updatedItems));
+      await prisma.lastestTimeItem.create(
+        data: PrismaUnion.$1(
+          LastestTimeItemCreateInput(
+              name: event.name,
+              cycleExp: event.cycleExp,
+              markTime: null,
+              isPinned: false),
+        ),
+      );
+      currentState.items.sort((a, b) => a.cycleExp.compareTo(b.cycleExp));
+      final items = await repo.load();
+      emit(ReadyState(items: items));
     }
   }
 
@@ -95,13 +105,11 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
 
   void _onDelete(DeleteEvent event, Emitter<LastestTimeState> emit) async {
     if (state is ReadyState) {
-      final currentState = state as ReadyState;
-      final updatedItems = currentState.items.where((item) {
-        return item.id != event.id;
-      }).toList();
+      await prisma.lastestTimeItem
+          .delete(where: LastestTimeItemWhereUniqueInput(id: event.id));
 
-      await repo.save(updatedItems);
-      emit(ReadyState(items: updatedItems));
+      final items = await repo.load();
+      emit(ReadyState(items: items));
     }
   }
 

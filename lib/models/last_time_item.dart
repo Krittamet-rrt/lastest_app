@@ -10,7 +10,14 @@ class LastestTimeItem extends Equatable {
   const LastestTimeItem(
       this.id, this.name, this.cycleExp, this.markTime, this.isPinned);
 
+  factory LastestTimeItem.fromJson(dynamic data) => LastestTimeItem(
+        data['id'],
+        data['name'],
+        data['cycleExp'],
+        data['markTime'],
+        data['isPinned'],
+      );
+
   @override
   List<Object?> get props => [id, markTime, isPinned];
-  //test commit branch fetch
 }

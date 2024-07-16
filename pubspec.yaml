@@ -29,4 +29,4 @@ flutter:
   uses-material-design: true
   assets:
     - prisma/migrations/
-    - prisma/migrations/20240716034111_lastest_time_item/
+    - prisma/migrations/20240716081220_lastest_item/

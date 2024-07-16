@@ -193,9 +193,9 @@ class StringFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
-class NestedDateTimeFilter
+class NestedDateTimeNullableFilter
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const NestedDateTimeFilter({
+  const NestedDateTimeNullableFilter({
     this.equals,
     this.$in,
     this.notIn,
@@ -206,11 +206,12 @@ class NestedDateTimeFilter
     this.not,
   });
 
-  final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
+  final _i1.PrismaUnion<DateTime,
+      _i1.PrismaUnion<_i1.Reference<DateTime>, _i1.PrismaNull>>? equals;
 
-  final Iterable<DateTime>? $in;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? $in;
 
-  final Iterable<DateTime>? notIn;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -220,7 +221,8 @@ class NestedDateTimeFilter
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? gte;
 
-  final _i1.PrismaUnion<DateTime, _i2.NestedDateTimeFilter>? not;
+  final _i1.PrismaUnion<DateTime,
+      _i1.PrismaUnion<_i2.NestedDateTimeNullableFilter, _i1.PrismaNull>>? not;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -235,8 +237,9 @@ class NestedDateTimeFilter
       };
 }
 
-class DateTimeFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const DateTimeFilter({
+class DateTimeNullableFilter
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const DateTimeNullableFilter({
     this.equals,
     this.$in,
     this.notIn,
@@ -247,11 +250,12 @@ class DateTimeFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
     this.not,
   });
 
-  final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
+  final _i1.PrismaUnion<DateTime,
+      _i1.PrismaUnion<_i1.Reference<DateTime>, _i1.PrismaNull>>? equals;
 
-  final Iterable<DateTime>? $in;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? $in;
 
-  final Iterable<DateTime>? notIn;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -261,7 +265,8 @@ class DateTimeFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? gte;
 
-  final _i1.PrismaUnion<DateTime, _i2.NestedDateTimeFilter>? not;
+  final _i1.PrismaUnion<DateTime,
+      _i1.PrismaUnion<_i2.NestedDateTimeNullableFilter, _i1.PrismaNull>>? not;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -337,7 +342,8 @@ class LastestTimeItemWhereInput
 
   final _i1.PrismaUnion<_i2.IntFilter, int>? cycleExp;
 
-  final _i1.PrismaUnion<_i2.DateTimeFilter, DateTime>? markTime;
+  final _i1.PrismaUnion<_i2.DateTimeNullableFilter,
+      _i1.PrismaUnion<DateTime, _i1.PrismaNull>>? markTime;
 
   final _i1.PrismaUnion<_i2.BoolFilter, bool>? isPinned;
 
@@ -381,7 +387,8 @@ class LastestTimeItemWhereUniqueInput
 
   final _i1.PrismaUnion<_i2.IntFilter, int>? cycleExp;
 
-  final _i1.PrismaUnion<_i2.DateTimeFilter, DateTime>? markTime;
+  final _i1.PrismaUnion<_i2.DateTimeNullableFilter,
+      _i1.PrismaUnion<DateTime, _i1.PrismaNull>>? markTime;
 
   final _i1.PrismaUnion<_i2.BoolFilter, bool>? isPinned;
 
@@ -438,6 +445,33 @@ enum SortOrder implements _i1.PrismaEnum {
   final String name;
 }
 
+enum NullsOrder implements _i1.PrismaEnum {
+  first._('first'),
+  last._('last');
+
+  const NullsOrder._(this.name);
+
+  @override
+  final String name;
+}
+
+class SortOrderInput implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const SortOrderInput({
+    required this.sort,
+    this.nulls,
+  });
+
+  final _i2.SortOrder sort;
+
+  final _i2.NullsOrder? nulls;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'sort': sort,
+        'nulls': nulls,
+      };
+}
+
 class LastestTimeItemOrderByWithRelationInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const LastestTimeItemOrderByWithRelationInput({
@@ -454,7 +488,7 @@ class LastestTimeItemOrderByWithRelationInput
 
   final _i2.SortOrder? cycleExp;
 
-  final _i2.SortOrder? markTime;
+  final _i1.PrismaUnion<_i2.SortOrder, _i2.SortOrderInput>? markTime;
 
   final _i2.SortOrder? isPinned;
 
@@ -492,7 +526,7 @@ class LastestTimeItemCreateInput
   const LastestTimeItemCreateInput({
     required this.name,
     required this.cycleExp,
-    required this.markTime,
+    this.markTime,
     required this.isPinned,
   });
 
@@ -500,7 +534,7 @@ class LastestTimeItemCreateInput
 
   final int cycleExp;
 
-  final DateTime markTime;
+  final _i1.PrismaUnion<DateTime, _i1.PrismaNull>? markTime;
 
   final bool isPinned;
 
@@ -519,7 +553,7 @@ class LastestTimeItemUncheckedCreateInput
     this.id,
     required this.name,
     required this.cycleExp,
-    required this.markTime,
+    this.markTime,
     required this.isPinned,
   });
 
@@ -529,7 +563,7 @@ class LastestTimeItemUncheckedCreateInput
 
   final int cycleExp;
 
-  final DateTime markTime;
+  final _i1.PrismaUnion<DateTime, _i1.PrismaNull>? markTime;
 
   final bool isPinned;
 
@@ -560,7 +594,7 @@ class LastestTimeItemCreateManyInput
     this.id,
     required this.name,
     required this.cycleExp,
-    required this.markTime,
+    this.markTime,
     required this.isPinned,
   });
 
@@ -570,7 +604,7 @@ class LastestTimeItemCreateManyInput
 
   final int cycleExp;
 
-  final DateTime markTime;
+  final _i1.PrismaUnion<DateTime, _i1.PrismaNull>? markTime;
 
   final bool isPinned;
 
@@ -654,11 +688,11 @@ class IntFieldUpdateOperationsInput
       };
 }
 
-class DateTimeFieldUpdateOperationsInput
+class NullableDateTimeFieldUpdateOperationsInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const DateTimeFieldUpdateOperationsInput({this.set});
+  const NullableDateTimeFieldUpdateOperationsInput({this.set});
 
-  final DateTime? set;
+  final _i1.PrismaUnion<DateTime, _i1.PrismaNull>? set;
 
   @override
   Map<String, dynamic> toJson() => {'set': set};
@@ -687,8 +721,10 @@ class LastestTimeItemUpdateInput
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
-  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
-      markTime;
+  final _i1.PrismaUnion<
+      DateTime,
+      _i1.PrismaUnion<_i2.NullableDateTimeFieldUpdateOperationsInput,
+          _i1.PrismaNull>>? markTime;
 
   final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isPinned;
 
@@ -717,8 +753,10 @@ class LastestTimeItemUncheckedUpdateInput
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
-  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
-      markTime;
+  final _i1.PrismaUnion<
+      DateTime,
+      _i1.PrismaUnion<_i2.NullableDateTimeFieldUpdateOperationsInput,
+          _i1.PrismaNull>>? markTime;
 
   final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isPinned;
 
@@ -745,8 +783,10 @@ class LastestTimeItemUpdateManyMutationInput
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
-  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
-      markTime;
+  final _i1.PrismaUnion<
+      DateTime,
+      _i1.PrismaUnion<_i2.NullableDateTimeFieldUpdateOperationsInput,
+          _i1.PrismaNull>>? markTime;
 
   final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isPinned;
 
@@ -775,8 +815,10 @@ class LastestTimeItemUncheckedUpdateManyInput
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? cycleExp;
 
-  final _i1.PrismaUnion<DateTime, _i2.DateTimeFieldUpdateOperationsInput>?
-      markTime;
+  final _i1.PrismaUnion<
+      DateTime,
+      _i1.PrismaUnion<_i2.NullableDateTimeFieldUpdateOperationsInput,
+          _i1.PrismaNull>>? markTime;
 
   final _i1.PrismaUnion<bool, _i2.BoolFieldUpdateOperationsInput>? isPinned;
 
@@ -1182,7 +1224,7 @@ class LastestTimeItemOrderByWithAggregationInput
 
   final _i2.SortOrder? cycleExp;
 
-  final _i2.SortOrder? markTime;
+  final _i1.PrismaUnion<_i2.SortOrder, _i2.SortOrderInput>? markTime;
 
   final _i2.SortOrder? isPinned;
 
@@ -1508,9 +1550,54 @@ class StringWithAggregatesFilter
       };
 }
 
-class NestedDateTimeWithAggregatesFilter
+class NestedIntNullableFilter
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const NestedDateTimeWithAggregatesFilter({
+  const NestedIntNullableFilter({
+    this.equals,
+    this.$in,
+    this.notIn,
+    this.lt,
+    this.lte,
+    this.gt,
+    this.gte,
+    this.not,
+  });
+
+  final _i1
+      .PrismaUnion<int, _i1.PrismaUnion<_i1.Reference<int>, _i1.PrismaNull>>?
+      equals;
+
+  final _i1.PrismaUnion<Iterable<int>, _i1.PrismaNull>? $in;
+
+  final _i1.PrismaUnion<Iterable<int>, _i1.PrismaNull>? notIn;
+
+  final _i1.PrismaUnion<int, _i1.Reference<int>>? lt;
+
+  final _i1.PrismaUnion<int, _i1.Reference<int>>? lte;
+
+  final _i1.PrismaUnion<int, _i1.Reference<int>>? gt;
+
+  final _i1.PrismaUnion<int, _i1.Reference<int>>? gte;
+
+  final _i1.PrismaUnion<int,
+      _i1.PrismaUnion<_i2.NestedIntNullableFilter, _i1.PrismaNull>>? not;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'equals': equals,
+        'in': $in,
+        'notIn': notIn,
+        'lt': lt,
+        'lte': lte,
+        'gt': gt,
+        'gte': gte,
+        'not': not,
+      };
+}
+
+class NestedDateTimeNullableWithAggregatesFilter
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const NestedDateTimeNullableWithAggregatesFilter({
     this.equals,
     this.$in,
     this.notIn,
@@ -1524,11 +1611,12 @@ class NestedDateTimeWithAggregatesFilter
     this.$max,
   });
 
-  final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
+  final _i1.PrismaUnion<DateTime,
+      _i1.PrismaUnion<_i1.Reference<DateTime>, _i1.PrismaNull>>? equals;
 
-  final Iterable<DateTime>? $in;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? $in;
 
-  final Iterable<DateTime>? notIn;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -1538,13 +1626,16 @@ class NestedDateTimeWithAggregatesFilter
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? gte;
 
-  final _i1.PrismaUnion<DateTime, _i2.NestedDateTimeWithAggregatesFilter>? not;
+  final _i1.PrismaUnion<
+      DateTime,
+      _i1.PrismaUnion<_i2.NestedDateTimeNullableWithAggregatesFilter,
+          _i1.PrismaNull>>? not;
 
-  final _i2.NestedIntFilter? $count;
+  final _i2.NestedIntNullableFilter? $count;
 
-  final _i2.NestedDateTimeFilter? $min;
+  final _i2.NestedDateTimeNullableFilter? $min;
 
-  final _i2.NestedDateTimeFilter? $max;
+  final _i2.NestedDateTimeNullableFilter? $max;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -1562,9 +1653,9 @@ class NestedDateTimeWithAggregatesFilter
       };
 }
 
-class DateTimeWithAggregatesFilter
+class DateTimeNullableWithAggregatesFilter
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const DateTimeWithAggregatesFilter({
+  const DateTimeNullableWithAggregatesFilter({
     this.equals,
     this.$in,
     this.notIn,
@@ -1578,11 +1669,12 @@ class DateTimeWithAggregatesFilter
     this.$max,
   });
 
-  final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
+  final _i1.PrismaUnion<DateTime,
+      _i1.PrismaUnion<_i1.Reference<DateTime>, _i1.PrismaNull>>? equals;
 
-  final Iterable<DateTime>? $in;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? $in;
 
-  final Iterable<DateTime>? notIn;
+  final _i1.PrismaUnion<Iterable<DateTime>, _i1.PrismaNull>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -1592,13 +1684,16 @@ class DateTimeWithAggregatesFilter
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? gte;
 
-  final _i1.PrismaUnion<DateTime, _i2.NestedDateTimeWithAggregatesFilter>? not;
+  final _i1.PrismaUnion<
+      DateTime,
+      _i1.PrismaUnion<_i2.NestedDateTimeNullableWithAggregatesFilter,
+          _i1.PrismaNull>>? not;
 
-  final _i2.NestedIntFilter? $count;
+  final _i2.NestedIntNullableFilter? $count;
 
-  final _i2.NestedDateTimeFilter? $min;
+  final _i2.NestedDateTimeNullableFilter? $min;
 
-  final _i2.NestedDateTimeFilter? $max;
+  final _i2.NestedDateTimeNullableFilter? $max;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -1703,7 +1798,8 @@ class LastestTimeItemScalarWhereWithAggregatesInput
 
   final _i1.PrismaUnion<_i2.IntWithAggregatesFilter, int>? cycleExp;
 
-  final _i1.PrismaUnion<_i2.DateTimeWithAggregatesFilter, DateTime>? markTime;
+  final _i1.PrismaUnion<_i2.DateTimeNullableWithAggregatesFilter,
+      _i1.PrismaUnion<DateTime, _i1.PrismaNull>>? markTime;
 
   final _i1.PrismaUnion<_i2.BoolWithAggregatesFilter, bool>? isPinned;
 

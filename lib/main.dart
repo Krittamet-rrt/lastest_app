@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lastest_time/bloc/app_bloc.dart';
-import 'package:lastest_time/repo/mock_repo.dart';
+import 'package:lastest_time/prisma.dart';
+import 'package:lastest_time/repo/db_repo.dart';
 import 'package:lastest_time/widgets/lastest_time_page.dart';
 import 'package:lastest_time/widgets/pinned_page.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  await initPrismaClient();
   runApp(MainApp());
 }
 
@@ -20,7 +21,7 @@ class MainApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider<LastestTimeBloc>(create: (context) {
-            final bloc = LastestTimeBloc(MockRepo());
+            final bloc = LastestTimeBloc(DbRepo());
             bloc.add(LoadEvent());
             return bloc;
           })

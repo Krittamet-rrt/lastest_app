@@ -17,9 +17,9 @@ datasource db {
 
 // create model for this project
 model LastestTimeItem {
-  id       Int      @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   name     String
   cycleExp Int
-  markTime DateTime
+  markTime DateTime?
   isPinned Boolean
 }

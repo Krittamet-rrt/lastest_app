@@ -546,7 +546,7 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
             'name': 'markTime',
             'kind': 'scalar',
             'isList': false,
-            'isRequired': true,
+            'isRequired': false,
             'isUnique': false,
             'isId': false,
             'isReadOnly': false,
@@ -604,7 +604,7 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
   @override
   get $engine => _engine ??= _i5.LibraryEngine(
         schema:
-            '// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider   = "dart run orm"\n  output     = "../lib/_generated_prisma_client"\n  engineType = "flutter"\n}\n\ndatasource db {\n  provider = "sqlite"\n  url      = "file:./db.sqlite"\n}\n\n// create model for this project\nmodel LastestTimeItem {\n  id       Int      @id @default(autoincrement())\n  name     String\n  cycleExp Int\n  markTime DateTime\n  isPinned Boolean\n}\n',
+            '// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider   = "dart run orm"\n  output     = "../lib/_generated_prisma_client"\n  engineType = "flutter"\n}\n\ndatasource db {\n  provider = "sqlite"\n  url      = "file:./db.sqlite"\n}\n\n// create model for this project\nmodel LastestTimeItem {\n  id       Int       @id @default(autoincrement())\n  name     String\n  cycleExp Int\n  markTime DateTime?\n  isPinned Boolean\n}\n',
         datasources: const {
           'db': _i1.Datasource(
             _i1.DatasourceType.url,
