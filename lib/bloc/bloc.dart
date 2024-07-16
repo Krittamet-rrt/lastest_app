@@ -19,6 +19,7 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
 
   void _onLoaded(LoadEvent event, Emitter<LastestTimeState> emit) async {
     final items = await repo.load();
+    await Future.delayed(const Duration(milliseconds: 0));
     items.sort((a, b) {
       if (a.isPinned != b.isPinned) {
         return a.isPinned ? -1 : 1;
@@ -41,20 +42,13 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
           ),
         ),
       );
-      final items = await repo.load();
-      items.sort((a, b) {
-        if (a.isPinned != b.isPinned) {
-          return a.isPinned ? -1 : 1;
-        }
-        return a.cycleExp.compareTo(b.cycleExp);
-      });
-      emit(ReadyState(items: items));
+      emit(LoadingState());
+      add(LoadEvent());
     }
   }
 
   void _onAdd(AddEvent event, Emitter<LastestTimeState> emit) async {
     if (state is ReadyState) {
-      final currentState = state as ReadyState;
       await prisma.lastestTimeItem.create(
         data: PrismaUnion.$1(
           LastestTimeItemCreateInput(
@@ -65,9 +59,8 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
               isPinned: false),
         ),
       );
-      currentState.items.sort((a, b) => a.cycleExp.compareTo(b.cycleExp));
-      final items = await repo.load();
-      emit(ReadyState(items: items));
+      emit(LoadingState());
+      add(LoadEvent());
     }
   }
 
@@ -81,15 +74,8 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
           ),
         ),
       );
-      final items = await repo.load();
-      items.sort((a, b) {
-        if (a.isPinned != b.isPinned) {
-          return a.isPinned ? -1 : 1;
-        }
-        return a.cycleExp.compareTo(b.cycleExp);
-      });
-
-      emit(ReadyState(items: items));
+      emit(LoadingState());
+      add(LoadEvent());
     }
   }
 
@@ -98,8 +84,8 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
       await prisma.lastestTimeItem
           .delete(where: LastestTimeItemWhereUniqueInput(id: event.id));
 
-      final items = await repo.load();
-      emit(ReadyState(items: items));
+      emit(LoadingState());
+      add(LoadEvent());
     }
   }
 
@@ -114,14 +100,8 @@ class LastestTimeBloc extends Bloc<LastestTimeEvent, LastestTimeState> {
           ),
         ),
       );
-      final items = await repo.load();
-      items.sort((a, b) {
-        if (a.isPinned != b.isPinned) {
-          return a.isPinned ? -1 : 1;
-        }
-        return a.cycleExp.compareTo(b.cycleExp);
-      });
-      emit(ReadyState(items: items));
+      emit(LoadingState());
+      add(LoadEvent());
     }
   }
 }
