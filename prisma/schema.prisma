@@ -16,7 +16,7 @@ datasource db {
 }
 
 // create model for this project
-model User {
+model LastestTimeItem {
   id       Int      @id @default(autoincrement())
   name     String
   cycleExp Int

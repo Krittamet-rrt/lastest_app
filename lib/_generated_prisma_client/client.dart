@@ -6,14 +6,14 @@ import 'package:orm_flutter/orm_flutter.dart' as _i5;
 import 'model.dart' as _i2;
 import 'prisma.dart' as _i3;
 
-class UserDelegate {
-  const UserDelegate._(this._client);
+class LastestTimeItemDelegate {
+  const LastestTimeItemDelegate._(this._client);
 
   final PrismaClient _client;
 
-  _i1.ActionClient<_i2.User?> findUnique({
-    required _i3.UserWhereUniqueInput where,
-    _i3.UserSelect? select,
+  _i1.ActionClient<_i2.LastestTimeItem?> findUnique({
+    required _i3.LastestTimeItemWhereUniqueInput where,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -21,7 +21,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.findUnique,
       datamodel: PrismaClient.datamodel,
     );
@@ -30,16 +30,16 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User?>(
-      action: 'findUniqueUser',
+    return _i1.ActionClient<_i2.LastestTimeItem?>(
+      action: 'findUniqueLastestTimeItem',
       result: result,
-      factory: (e) => e != null ? _i2.User.fromJson(e) : null,
+      factory: (e) => e != null ? _i2.LastestTimeItem.fromJson(e) : null,
     );
   }
 
-  _i1.ActionClient<_i2.User> findUniqueOrThrow({
-    required _i3.UserWhereUniqueInput where,
-    _i3.UserSelect? select,
+  _i1.ActionClient<_i2.LastestTimeItem> findUniqueOrThrow({
+    required _i3.LastestTimeItemWhereUniqueInput where,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -47,7 +47,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.findUniqueOrThrow,
       datamodel: PrismaClient.datamodel,
     );
@@ -56,23 +56,25 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User>(
-      action: 'findUniqueUserOrThrow',
+    return _i1.ActionClient<_i2.LastestTimeItem>(
+      action: 'findUniqueLastestTimeItemOrThrow',
       result: result,
-      factory: (e) => _i2.User.fromJson(e),
+      factory: (e) => _i2.LastestTimeItem.fromJson(e),
     );
   }
 
-  _i1.ActionClient<_i2.User?> findFirst({
-    _i3.UserWhereInput? where,
-    _i1.PrismaUnion<Iterable<_i3.UserOrderByWithRelationInput>,
-            _i3.UserOrderByWithRelationInput>?
+  _i1.ActionClient<_i2.LastestTimeItem?> findFirst({
+    _i3.LastestTimeItemWhereInput? where,
+    _i1.PrismaUnion<Iterable<_i3.LastestTimeItemOrderByWithRelationInput>,
+            _i3.LastestTimeItemOrderByWithRelationInput>?
         orderBy,
-    _i3.UserWhereUniqueInput? cursor,
+    _i3.LastestTimeItemWhereUniqueInput? cursor,
     int? take,
     int? skip,
-    _i1.PrismaUnion<_i3.UserScalar, Iterable<_i3.UserScalar>>? distinct,
-    _i3.UserSelect? select,
+    _i1.PrismaUnion<_i3.LastestTimeItemScalar,
+            Iterable<_i3.LastestTimeItemScalar>>?
+        distinct,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -85,7 +87,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.findFirst,
       datamodel: PrismaClient.datamodel,
     );
@@ -94,23 +96,25 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User?>(
-      action: 'findFirstUser',
+    return _i1.ActionClient<_i2.LastestTimeItem?>(
+      action: 'findFirstLastestTimeItem',
       result: result,
-      factory: (e) => e != null ? _i2.User.fromJson(e) : null,
+      factory: (e) => e != null ? _i2.LastestTimeItem.fromJson(e) : null,
     );
   }
 
-  _i1.ActionClient<_i2.User> findFirstOrThrow({
-    _i3.UserWhereInput? where,
-    _i1.PrismaUnion<Iterable<_i3.UserOrderByWithRelationInput>,
-            _i3.UserOrderByWithRelationInput>?
+  _i1.ActionClient<_i2.LastestTimeItem> findFirstOrThrow({
+    _i3.LastestTimeItemWhereInput? where,
+    _i1.PrismaUnion<Iterable<_i3.LastestTimeItemOrderByWithRelationInput>,
+            _i3.LastestTimeItemOrderByWithRelationInput>?
         orderBy,
-    _i3.UserWhereUniqueInput? cursor,
+    _i3.LastestTimeItemWhereUniqueInput? cursor,
     int? take,
     int? skip,
-    _i1.PrismaUnion<_i3.UserScalar, Iterable<_i3.UserScalar>>? distinct,
-    _i3.UserSelect? select,
+    _i1.PrismaUnion<_i3.LastestTimeItemScalar,
+            Iterable<_i3.LastestTimeItemScalar>>?
+        distinct,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -123,7 +127,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.findFirstOrThrow,
       datamodel: PrismaClient.datamodel,
     );
@@ -132,23 +136,25 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User>(
-      action: 'findFirstUserOrThrow',
+    return _i1.ActionClient<_i2.LastestTimeItem>(
+      action: 'findFirstLastestTimeItemOrThrow',
       result: result,
-      factory: (e) => _i2.User.fromJson(e),
+      factory: (e) => _i2.LastestTimeItem.fromJson(e),
     );
   }
 
-  _i1.ActionClient<Iterable<_i2.User>> findMany({
-    _i3.UserWhereInput? where,
-    _i1.PrismaUnion<Iterable<_i3.UserOrderByWithRelationInput>,
-            _i3.UserOrderByWithRelationInput>?
+  _i1.ActionClient<Iterable<_i2.LastestTimeItem>> findMany({
+    _i3.LastestTimeItemWhereInput? where,
+    _i1.PrismaUnion<Iterable<_i3.LastestTimeItemOrderByWithRelationInput>,
+            _i3.LastestTimeItemOrderByWithRelationInput>?
         orderBy,
-    _i3.UserWhereUniqueInput? cursor,
+    _i3.LastestTimeItemWhereUniqueInput? cursor,
     int? take,
     int? skip,
-    _i1.PrismaUnion<_i3.UserScalar, Iterable<_i3.UserScalar>>? distinct,
-    _i3.UserSelect? select,
+    _i1.PrismaUnion<_i3.LastestTimeItemScalar,
+            Iterable<_i3.LastestTimeItemScalar>>?
+        distinct,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -161,7 +167,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.findMany,
       datamodel: PrismaClient.datamodel,
     );
@@ -170,18 +176,19 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<Iterable<_i2.User>>(
-      action: 'findManyUser',
+    return _i1.ActionClient<Iterable<_i2.LastestTimeItem>>(
+      action: 'findManyLastestTimeItem',
       result: result,
       factory: (values) =>
-          (values as Iterable).map((e) => _i2.User.fromJson(e)),
+          (values as Iterable).map((e) => _i2.LastestTimeItem.fromJson(e)),
     );
   }
 
-  _i1.ActionClient<_i2.User> create({
-    required _i1.PrismaUnion<_i3.UserCreateInput, _i3.UserUncheckedCreateInput>
+  _i1.ActionClient<_i2.LastestTimeItem> create({
+    required _i1.PrismaUnion<_i3.LastestTimeItemCreateInput,
+            _i3.LastestTimeItemUncheckedCreateInput>
         data,
-    _i3.UserSelect? select,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'data': data,
@@ -189,7 +196,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.createOne,
       datamodel: PrismaClient.datamodel,
     );
@@ -198,26 +205,21 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User>(
-      action: 'createOneUser',
+    return _i1.ActionClient<_i2.LastestTimeItem>(
+      action: 'createOneLastestTimeItem',
       result: result,
-      factory: (e) => _i2.User.fromJson(e),
+      factory: (e) => _i2.LastestTimeItem.fromJson(e),
     );
   }
 
-  _i1.ActionClient<_i3.AffectedRowsOutput> createMany({
-    required _i1
-        .PrismaUnion<_i3.UserCreateManyInput, Iterable<_i3.UserCreateManyInput>>
-        data,
-    bool? skipDuplicates,
-  }) {
-    final args = {
-      'data': data,
-      'skipDuplicates': skipDuplicates,
-    };
+  _i1.ActionClient<_i3.AffectedRowsOutput> createMany(
+      {required _i1.PrismaUnion<_i3.LastestTimeItemCreateManyInput,
+              Iterable<_i3.LastestTimeItemCreateManyInput>>
+          data}) {
+    final args = {'data': data};
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.createMany,
       datamodel: PrismaClient.datamodel,
     );
@@ -227,28 +229,26 @@ class UserDelegate {
       transaction: _client.$transaction.transaction,
     );
     return _i1.ActionClient<_i3.AffectedRowsOutput>(
-      action: 'createManyUser',
+      action: 'createManyLastestTimeItem',
       result: result,
       factory: (e) => _i3.AffectedRowsOutput.fromJson(e),
     );
   }
 
-  _i1.ActionClient<Iterable<_i2.CreateManyUserAndReturnOutputType>>
+  _i1.ActionClient<Iterable<_i2.CreateManyLastestTimeItemAndReturnOutputType>>
       createManyAndReturn({
-    required _i1
-        .PrismaUnion<_i3.UserCreateManyInput, Iterable<_i3.UserCreateManyInput>>
+    required _i1.PrismaUnion<_i3.LastestTimeItemCreateManyInput,
+            Iterable<_i3.LastestTimeItemCreateManyInput>>
         data,
-    bool? skipDuplicates,
-    _i3.CreateManyUserAndReturnOutputTypeSelect? select,
+    _i3.CreateManyLastestTimeItemAndReturnOutputTypeSelect? select,
   }) {
     final args = {
       'data': data,
-      'skipDuplicates': skipDuplicates,
       'select': select,
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.createManyAndReturn,
       datamodel: PrismaClient.datamodel,
     );
@@ -257,19 +257,21 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<Iterable<_i2.CreateManyUserAndReturnOutputType>>(
-      action: 'createManyUserAndReturn',
+    return _i1.ActionClient<
+        Iterable<_i2.CreateManyLastestTimeItemAndReturnOutputType>>(
+      action: 'createManyLastestTimeItemAndReturn',
       result: result,
-      factory: (values) => (values as Iterable)
-          .map((e) => _i2.CreateManyUserAndReturnOutputType.fromJson(e)),
+      factory: (values) => (values as Iterable).map(
+          (e) => _i2.CreateManyLastestTimeItemAndReturnOutputType.fromJson(e)),
     );
   }
 
-  _i1.ActionClient<_i2.User?> update({
-    required _i1.PrismaUnion<_i3.UserUpdateInput, _i3.UserUncheckedUpdateInput>
+  _i1.ActionClient<_i2.LastestTimeItem?> update({
+    required _i1.PrismaUnion<_i3.LastestTimeItemUpdateInput,
+            _i3.LastestTimeItemUncheckedUpdateInput>
         data,
-    required _i3.UserWhereUniqueInput where,
-    _i3.UserSelect? select,
+    required _i3.LastestTimeItemWhereUniqueInput where,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'data': data,
@@ -278,7 +280,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.updateOne,
       datamodel: PrismaClient.datamodel,
     );
@@ -287,18 +289,18 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User?>(
-      action: 'updateOneUser',
+    return _i1.ActionClient<_i2.LastestTimeItem?>(
+      action: 'updateOneLastestTimeItem',
       result: result,
-      factory: (e) => e != null ? _i2.User.fromJson(e) : null,
+      factory: (e) => e != null ? _i2.LastestTimeItem.fromJson(e) : null,
     );
   }
 
   _i1.ActionClient<_i3.AffectedRowsOutput> updateMany({
-    required _i1.PrismaUnion<_i3.UserUpdateManyMutationInput,
-            _i3.UserUncheckedUpdateManyInput>
+    required _i1.PrismaUnion<_i3.LastestTimeItemUpdateManyMutationInput,
+            _i3.LastestTimeItemUncheckedUpdateManyInput>
         data,
-    _i3.UserWhereInput? where,
+    _i3.LastestTimeItemWhereInput? where,
   }) {
     final args = {
       'data': data,
@@ -306,7 +308,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.updateMany,
       datamodel: PrismaClient.datamodel,
     );
@@ -316,19 +318,21 @@ class UserDelegate {
       transaction: _client.$transaction.transaction,
     );
     return _i1.ActionClient<_i3.AffectedRowsOutput>(
-      action: 'updateManyUser',
+      action: 'updateManyLastestTimeItem',
       result: result,
       factory: (e) => _i3.AffectedRowsOutput.fromJson(e),
     );
   }
 
-  _i1.ActionClient<_i2.User> upsert({
-    required _i3.UserWhereUniqueInput where,
-    required _i1.PrismaUnion<_i3.UserCreateInput, _i3.UserUncheckedCreateInput>
+  _i1.ActionClient<_i2.LastestTimeItem> upsert({
+    required _i3.LastestTimeItemWhereUniqueInput where,
+    required _i1.PrismaUnion<_i3.LastestTimeItemCreateInput,
+            _i3.LastestTimeItemUncheckedCreateInput>
         create,
-    required _i1.PrismaUnion<_i3.UserUpdateInput, _i3.UserUncheckedUpdateInput>
+    required _i1.PrismaUnion<_i3.LastestTimeItemUpdateInput,
+            _i3.LastestTimeItemUncheckedUpdateInput>
         update,
-    _i3.UserSelect? select,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -338,7 +342,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.upsertOne,
       datamodel: PrismaClient.datamodel,
     );
@@ -347,16 +351,16 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User>(
-      action: 'upsertOneUser',
+    return _i1.ActionClient<_i2.LastestTimeItem>(
+      action: 'upsertOneLastestTimeItem',
       result: result,
-      factory: (e) => _i2.User.fromJson(e),
+      factory: (e) => _i2.LastestTimeItem.fromJson(e),
     );
   }
 
-  _i1.ActionClient<_i2.User?> delete({
-    required _i3.UserWhereUniqueInput where,
-    _i3.UserSelect? select,
+  _i1.ActionClient<_i2.LastestTimeItem?> delete({
+    required _i3.LastestTimeItemWhereUniqueInput where,
+    _i3.LastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -364,7 +368,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.deleteOne,
       datamodel: PrismaClient.datamodel,
     );
@@ -373,19 +377,19 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i2.User?>(
-      action: 'deleteOneUser',
+    return _i1.ActionClient<_i2.LastestTimeItem?>(
+      action: 'deleteOneLastestTimeItem',
       result: result,
-      factory: (e) => e != null ? _i2.User.fromJson(e) : null,
+      factory: (e) => e != null ? _i2.LastestTimeItem.fromJson(e) : null,
     );
   }
 
   _i1.ActionClient<_i3.AffectedRowsOutput> deleteMany(
-      {_i3.UserWhereInput? where}) {
+      {_i3.LastestTimeItemWhereInput? where}) {
     final args = {'where': where};
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.deleteMany,
       datamodel: PrismaClient.datamodel,
     );
@@ -395,22 +399,24 @@ class UserDelegate {
       transaction: _client.$transaction.transaction,
     );
     return _i1.ActionClient<_i3.AffectedRowsOutput>(
-      action: 'deleteManyUser',
+      action: 'deleteManyLastestTimeItem',
       result: result,
       factory: (e) => _i3.AffectedRowsOutput.fromJson(e),
     );
   }
 
-  _i1.ActionClient<Iterable<_i3.UserGroupByOutputType>> groupBy({
-    _i3.UserWhereInput? where,
-    _i1.PrismaUnion<Iterable<_i3.UserOrderByWithAggregationInput>,
-            _i3.UserOrderByWithAggregationInput>?
+  _i1.ActionClient<Iterable<_i3.LastestTimeItemGroupByOutputType>> groupBy({
+    _i3.LastestTimeItemWhereInput? where,
+    _i1.PrismaUnion<Iterable<_i3.LastestTimeItemOrderByWithAggregationInput>,
+            _i3.LastestTimeItemOrderByWithAggregationInput>?
         orderBy,
-    required _i1.PrismaUnion<Iterable<_i3.UserScalar>, _i3.UserScalar> by,
-    _i3.UserScalarWhereWithAggregatesInput? having,
+    required _i1.PrismaUnion<Iterable<_i3.LastestTimeItemScalar>,
+            _i3.LastestTimeItemScalar>
+        by,
+    _i3.LastestTimeItemScalarWhereWithAggregatesInput? having,
     int? take,
     int? skip,
-    _i3.UserGroupByOutputTypeSelect? select,
+    _i3.LastestTimeItemGroupByOutputTypeSelect? select,
   }) {
     final args = {
       'where': where,
@@ -423,7 +429,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.groupBy,
       datamodel: PrismaClient.datamodel,
     );
@@ -432,23 +438,23 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<Iterable<_i3.UserGroupByOutputType>>(
-      action: 'groupByUser',
+    return _i1.ActionClient<Iterable<_i3.LastestTimeItemGroupByOutputType>>(
+      action: 'groupByLastestTimeItem',
       result: result,
       factory: (values) => (values as Iterable)
-          .map((e) => _i3.UserGroupByOutputType.fromJson(e)),
+          .map((e) => _i3.LastestTimeItemGroupByOutputType.fromJson(e)),
     );
   }
 
-  _i1.ActionClient<_i3.AggregateUser> aggregate({
-    _i3.UserWhereInput? where,
-    _i1.PrismaUnion<Iterable<_i3.UserOrderByWithRelationInput>,
-            _i3.UserOrderByWithRelationInput>?
+  _i1.ActionClient<_i3.AggregateLastestTimeItem> aggregate({
+    _i3.LastestTimeItemWhereInput? where,
+    _i1.PrismaUnion<Iterable<_i3.LastestTimeItemOrderByWithRelationInput>,
+            _i3.LastestTimeItemOrderByWithRelationInput>?
         orderBy,
-    _i3.UserWhereUniqueInput? cursor,
+    _i3.LastestTimeItemWhereUniqueInput? cursor,
     int? take,
     int? skip,
-    _i3.AggregateUserSelect? select,
+    _i3.AggregateLastestTimeItemSelect? select,
   }) {
     final args = {
       'where': where,
@@ -460,7 +466,7 @@ class UserDelegate {
     };
     final query = _i1.serializeJsonQuery(
       args: args,
-      modelName: 'User',
+      modelName: 'LastestTimeItem',
       action: _i1.JsonQueryAction.aggregate,
       datamodel: PrismaClient.datamodel,
     );
@@ -469,10 +475,10 @@ class UserDelegate {
       headers: _client.$transaction.headers,
       transaction: _client.$transaction.transaction,
     );
-    return _i1.ActionClient<_i3.AggregateUser>(
-      action: 'aggregateUser',
+    return _i1.ActionClient<_i3.AggregateLastestTimeItem>(
+      action: 'aggregateLastestTimeItem',
       result: result,
-      factory: (e) => _i3.AggregateUser.fromJson(e),
+      factory: (e) => _i3.AggregateLastestTimeItem.fromJson(e),
     );
   }
 }
@@ -490,7 +496,7 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
     'enums': [],
     'models': [
       {
-        'name': 'User',
+        'name': 'LastestTimeItem',
         'dbName': null,
         'fields': [
           {
@@ -598,11 +604,11 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
   @override
   get $engine => _engine ??= _i5.LibraryEngine(
         schema:
-            '// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider   = "dart run orm"\n  output     = "../lib/_generated_prisma_client"\n  engineType = "flutter"\n}\n\ndatasource db {\n  provider = "postgresql"\n  url      = env("DATABASE_URL")\n}\n\n// create model for this project\nmodel User {\n  id       Int      @id @default(autoincrement())\n  name     String\n  cycleExp Int\n  markTime DateTime\n  isPinned Boolean\n}\n',
+            '// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider   = "dart run orm"\n  output     = "../lib/_generated_prisma_client"\n  engineType = "flutter"\n}\n\ndatasource db {\n  provider = "sqlite"\n  url      = "file:./db.sqlite"\n}\n\n// create model for this project\nmodel LastestTimeItem {\n  id       Int      @id @default(autoincrement())\n  name     String\n  cycleExp Int\n  markTime DateTime\n  isPinned Boolean\n}\n',
         datasources: const {
           'db': _i1.Datasource(
-            _i1.DatasourceType.environment,
-            'DATABASE_URL',
+            _i1.DatasourceType.url,
+            'file:./db.sqlite',
           )
         },
         options: $options,
@@ -611,5 +617,6 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
   @override
   get $datamodel => datamodel;
 
-  UserDelegate get user => UserDelegate._(this);
+  LastestTimeItemDelegate get lastestTimeItem =>
+      LastestTimeItemDelegate._(this);
 }

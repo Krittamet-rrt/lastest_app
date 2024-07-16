@@ -1,5 +1,5 @@
-class User {
-  const User({
+class LastestTimeItem {
+  const LastestTimeItem({
     this.id,
     this.name,
     this.cycleExp,
@@ -7,7 +7,7 @@ class User {
     this.isPinned,
   });
 
-  factory User.fromJson(Map json) => User(
+  factory LastestTimeItem.fromJson(Map json) => LastestTimeItem(
         id: json['id'],
         name: json['name'],
         cycleExp: json['cycleExp'],
@@ -38,8 +38,8 @@ class User {
       };
 }
 
-class CreateManyUserAndReturnOutputType {
-  const CreateManyUserAndReturnOutputType({
+class CreateManyLastestTimeItemAndReturnOutputType {
+  const CreateManyLastestTimeItemAndReturnOutputType({
     this.id,
     this.name,
     this.cycleExp,
@@ -47,8 +47,8 @@ class CreateManyUserAndReturnOutputType {
     this.isPinned,
   });
 
-  factory CreateManyUserAndReturnOutputType.fromJson(Map json) =>
-      CreateManyUserAndReturnOutputType(
+  factory CreateManyLastestTimeItemAndReturnOutputType.fromJson(Map json) =>
+      CreateManyLastestTimeItemAndReturnOutputType(
         id: json['id'],
         name: json['name'],
         cycleExp: json['cycleExp'],

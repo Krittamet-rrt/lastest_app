@@ -19,9 +19,9 @@ class NestedIntFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? equals;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? $in;
+  final Iterable<int>? $in;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? notIn;
+  final Iterable<int>? notIn;
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? lt;
 
@@ -60,9 +60,9 @@ class IntFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? equals;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? $in;
+  final Iterable<int>? $in;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? notIn;
+  final Iterable<int>? notIn;
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? lt;
 
@@ -87,16 +87,6 @@ class IntFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
-enum QueryMode implements _i1.PrismaEnum {
-  $default._('default'),
-  insensitive._('insensitive');
-
-  const QueryMode._(this.name);
-
-  @override
-  final String name;
-}
-
 class NestedStringFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
   const NestedStringFilter({
     this.equals,
@@ -114,10 +104,9 @@ class NestedStringFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? equals;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>? $in;
+  final Iterable<String>? $in;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>?
-      notIn;
+  final Iterable<String>? notIn;
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? lt;
 
@@ -163,16 +152,14 @@ class StringFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
     this.contains,
     this.startsWith,
     this.endsWith,
-    this.mode,
     this.not,
   });
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? equals;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>? $in;
+  final Iterable<String>? $in;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>?
-      notIn;
+  final Iterable<String>? notIn;
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? lt;
 
@@ -188,8 +175,6 @@ class StringFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? endsWith;
 
-  final _i2.QueryMode? mode;
-
   final _i1.PrismaUnion<String, _i2.NestedStringFilter>? not;
 
   @override
@@ -204,7 +189,6 @@ class StringFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
         'contains': contains,
         'startsWith': startsWith,
         'endsWith': endsWith,
-        'mode': mode,
         'not': not,
       };
 }
@@ -224,11 +208,9 @@ class NestedDateTimeFilter
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      $in;
+  final Iterable<DateTime>? $in;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      notIn;
+  final Iterable<DateTime>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -267,11 +249,9 @@ class DateTimeFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      $in;
+  final Iterable<DateTime>? $in;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      notIn;
+  final Iterable<DateTime>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -330,8 +310,9 @@ class BoolFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
-class UserWhereInput implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserWhereInput({
+class LastestTimeItemWhereInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemWhereInput({
     this.AND,
     this.OR,
     this.NOT,
@@ -342,11 +323,13 @@ class UserWhereInput implements _i1.JsonConvertible<Map<String, dynamic>> {
     this.isPinned,
   });
 
-  final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? AND;
+  final _i1.PrismaUnion<_i2.LastestTimeItemWhereInput,
+      Iterable<_i2.LastestTimeItemWhereInput>>? AND;
 
-  final Iterable<_i2.UserWhereInput>? OR;
+  final Iterable<_i2.LastestTimeItemWhereInput>? OR;
 
-  final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? NOT;
+  final _i1.PrismaUnion<_i2.LastestTimeItemWhereInput,
+      Iterable<_i2.LastestTimeItemWhereInput>>? NOT;
 
   final _i1.PrismaUnion<_i2.IntFilter, int>? id;
 
@@ -371,9 +354,9 @@ class UserWhereInput implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
-class UserWhereUniqueInput
+class LastestTimeItemWhereUniqueInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserWhereUniqueInput({
+  const LastestTimeItemWhereUniqueInput({
     this.id,
     this.AND,
     this.OR,
@@ -386,11 +369,13 @@ class UserWhereUniqueInput
 
   final int? id;
 
-  final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? AND;
+  final _i1.PrismaUnion<_i2.LastestTimeItemWhereInput,
+      Iterable<_i2.LastestTimeItemWhereInput>>? AND;
 
-  final Iterable<_i2.UserWhereInput>? OR;
+  final Iterable<_i2.LastestTimeItemWhereInput>? OR;
 
-  final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? NOT;
+  final _i1.PrismaUnion<_i2.LastestTimeItemWhereInput,
+      Iterable<_i2.LastestTimeItemWhereInput>>? NOT;
 
   final _i1.PrismaUnion<_i2.StringFilter, String>? name;
 
@@ -413,8 +398,9 @@ class UserWhereUniqueInput
       };
 }
 
-class UserSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserSelect({
+class LastestTimeItemSelect
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemSelect({
     this.id,
     this.name,
     this.cycleExp,
@@ -452,9 +438,9 @@ enum SortOrder implements _i1.PrismaEnum {
   final String name;
 }
 
-class UserOrderByWithRelationInput
+class LastestTimeItemOrderByWithRelationInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserOrderByWithRelationInput({
+  const LastestTimeItemOrderByWithRelationInput({
     this.id,
     this.name,
     this.cycleExp,
@@ -482,14 +468,14 @@ class UserOrderByWithRelationInput
       };
 }
 
-enum UserScalar<T> implements _i1.PrismaEnum, _i1.Reference<T> {
-  id<int>('id', 'User'),
-  name$<String>('name', 'User'),
-  cycleExp<int>('cycleExp', 'User'),
-  markTime<DateTime>('markTime', 'User'),
-  isPinned<bool>('isPinned', 'User');
+enum LastestTimeItemScalar<T> implements _i1.PrismaEnum, _i1.Reference<T> {
+  id<int>('id', 'LastestTimeItem'),
+  name$<String>('name', 'LastestTimeItem'),
+  cycleExp<int>('cycleExp', 'LastestTimeItem'),
+  markTime<DateTime>('markTime', 'LastestTimeItem'),
+  isPinned<bool>('isPinned', 'LastestTimeItem');
 
-  const UserScalar(
+  const LastestTimeItemScalar(
     this.name,
     this.model,
   );
@@ -501,8 +487,9 @@ enum UserScalar<T> implements _i1.PrismaEnum, _i1.Reference<T> {
   final String model;
 }
 
-class UserCreateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserCreateInput({
+class LastestTimeItemCreateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemCreateInput({
     required this.name,
     required this.cycleExp,
     required this.markTime,
@@ -526,9 +513,9 @@ class UserCreateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
-class UserUncheckedCreateInput
+class LastestTimeItemUncheckedCreateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUncheckedCreateInput({
+  const LastestTimeItemUncheckedCreateInput({
     this.id,
     required this.name,
     required this.cycleExp,
@@ -567,8 +554,9 @@ class AffectedRowsOutput {
   Map<String, dynamic> toJson() => {'count': count};
 }
 
-class UserCreateManyInput implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserCreateManyInput({
+class LastestTimeItemCreateManyInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemCreateManyInput({
     this.id,
     required this.name,
     required this.cycleExp,
@@ -596,9 +584,9 @@ class UserCreateManyInput implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
-class CreateManyUserAndReturnOutputTypeSelect
+class CreateManyLastestTimeItemAndReturnOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const CreateManyUserAndReturnOutputTypeSelect({
+  const CreateManyLastestTimeItemAndReturnOutputTypeSelect({
     this.id,
     this.name,
     this.cycleExp,
@@ -686,8 +674,9 @@ class BoolFieldUpdateOperationsInput
   Map<String, dynamic> toJson() => {'set': set};
 }
 
-class UserUpdateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUpdateInput({
+class LastestTimeItemUpdateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemUpdateInput({
     this.name,
     this.cycleExp,
     this.markTime,
@@ -712,9 +701,9 @@ class UserUpdateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
       };
 }
 
-class UserUncheckedUpdateInput
+class LastestTimeItemUncheckedUpdateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUncheckedUpdateInput({
+  const LastestTimeItemUncheckedUpdateInput({
     this.id,
     this.name,
     this.cycleExp,
@@ -743,9 +732,9 @@ class UserUncheckedUpdateInput
       };
 }
 
-class UserUpdateManyMutationInput
+class LastestTimeItemUpdateManyMutationInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUpdateManyMutationInput({
+  const LastestTimeItemUpdateManyMutationInput({
     this.name,
     this.cycleExp,
     this.markTime,
@@ -770,9 +759,9 @@ class UserUpdateManyMutationInput
       };
 }
 
-class UserUncheckedUpdateManyInput
+class LastestTimeItemUncheckedUpdateManyInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUncheckedUpdateManyInput({
+  const LastestTimeItemUncheckedUpdateManyInput({
     this.id,
     this.name,
     this.cycleExp,
@@ -801,8 +790,8 @@ class UserUncheckedUpdateManyInput
       };
 }
 
-class UserCountAggregateOutputType {
-  const UserCountAggregateOutputType({
+class LastestTimeItemCountAggregateOutputType {
+  const LastestTimeItemCountAggregateOutputType({
     this.id,
     this.name,
     this.cycleExp,
@@ -811,8 +800,8 @@ class UserCountAggregateOutputType {
     this.$all,
   });
 
-  factory UserCountAggregateOutputType.fromJson(Map json) =>
-      UserCountAggregateOutputType(
+  factory LastestTimeItemCountAggregateOutputType.fromJson(Map json) =>
+      LastestTimeItemCountAggregateOutputType(
         id: json['id'],
         name: json['name'],
         cycleExp: json['cycleExp'],
@@ -843,14 +832,14 @@ class UserCountAggregateOutputType {
       };
 }
 
-class UserAvgAggregateOutputType {
-  const UserAvgAggregateOutputType({
+class LastestTimeItemAvgAggregateOutputType {
+  const LastestTimeItemAvgAggregateOutputType({
     this.id,
     this.cycleExp,
   });
 
-  factory UserAvgAggregateOutputType.fromJson(Map json) =>
-      UserAvgAggregateOutputType(
+  factory LastestTimeItemAvgAggregateOutputType.fromJson(Map json) =>
+      LastestTimeItemAvgAggregateOutputType(
         id: json['id'],
         cycleExp: json['cycleExp'],
       );
@@ -865,14 +854,14 @@ class UserAvgAggregateOutputType {
       };
 }
 
-class UserSumAggregateOutputType {
-  const UserSumAggregateOutputType({
+class LastestTimeItemSumAggregateOutputType {
+  const LastestTimeItemSumAggregateOutputType({
     this.id,
     this.cycleExp,
   });
 
-  factory UserSumAggregateOutputType.fromJson(Map json) =>
-      UserSumAggregateOutputType(
+  factory LastestTimeItemSumAggregateOutputType.fromJson(Map json) =>
+      LastestTimeItemSumAggregateOutputType(
         id: json['id'],
         cycleExp: json['cycleExp'],
       );
@@ -887,8 +876,8 @@ class UserSumAggregateOutputType {
       };
 }
 
-class UserMinAggregateOutputType {
-  const UserMinAggregateOutputType({
+class LastestTimeItemMinAggregateOutputType {
+  const LastestTimeItemMinAggregateOutputType({
     this.id,
     this.name,
     this.cycleExp,
@@ -896,8 +885,8 @@ class UserMinAggregateOutputType {
     this.isPinned,
   });
 
-  factory UserMinAggregateOutputType.fromJson(Map json) =>
-      UserMinAggregateOutputType(
+  factory LastestTimeItemMinAggregateOutputType.fromJson(Map json) =>
+      LastestTimeItemMinAggregateOutputType(
         id: json['id'],
         name: json['name'],
         cycleExp: json['cycleExp'],
@@ -928,8 +917,8 @@ class UserMinAggregateOutputType {
       };
 }
 
-class UserMaxAggregateOutputType {
-  const UserMaxAggregateOutputType({
+class LastestTimeItemMaxAggregateOutputType {
+  const LastestTimeItemMaxAggregateOutputType({
     this.id,
     this.name,
     this.cycleExp,
@@ -937,8 +926,8 @@ class UserMaxAggregateOutputType {
     this.isPinned,
   });
 
-  factory UserMaxAggregateOutputType.fromJson(Map json) =>
-      UserMaxAggregateOutputType(
+  factory LastestTimeItemMaxAggregateOutputType.fromJson(Map json) =>
+      LastestTimeItemMaxAggregateOutputType(
         id: json['id'],
         name: json['name'],
         cycleExp: json['cycleExp'],
@@ -969,8 +958,8 @@ class UserMaxAggregateOutputType {
       };
 }
 
-class UserGroupByOutputType {
-  const UserGroupByOutputType({
+class LastestTimeItemGroupByOutputType {
+  const LastestTimeItemGroupByOutputType({
     this.id,
     this.name,
     this.cycleExp,
@@ -983,7 +972,8 @@ class UserGroupByOutputType {
     this.$max,
   });
 
-  factory UserGroupByOutputType.fromJson(Map json) => UserGroupByOutputType(
+  factory LastestTimeItemGroupByOutputType.fromJson(Map json) =>
+      LastestTimeItemGroupByOutputType(
         id: json['id'],
         name: json['name'],
         cycleExp: json['cycleExp'],
@@ -994,19 +984,20 @@ class UserGroupByOutputType {
         },
         isPinned: json['isPinned'],
         $count: json['_count'] is Map
-            ? _i2.UserCountAggregateOutputType.fromJson(json['_count'])
+            ? _i2.LastestTimeItemCountAggregateOutputType.fromJson(
+                json['_count'])
             : null,
         $avg: json['_avg'] is Map
-            ? _i2.UserAvgAggregateOutputType.fromJson(json['_avg'])
+            ? _i2.LastestTimeItemAvgAggregateOutputType.fromJson(json['_avg'])
             : null,
         $sum: json['_sum'] is Map
-            ? _i2.UserSumAggregateOutputType.fromJson(json['_sum'])
+            ? _i2.LastestTimeItemSumAggregateOutputType.fromJson(json['_sum'])
             : null,
         $min: json['_min'] is Map
-            ? _i2.UserMinAggregateOutputType.fromJson(json['_min'])
+            ? _i2.LastestTimeItemMinAggregateOutputType.fromJson(json['_min'])
             : null,
         $max: json['_max'] is Map
-            ? _i2.UserMaxAggregateOutputType.fromJson(json['_max'])
+            ? _i2.LastestTimeItemMaxAggregateOutputType.fromJson(json['_max'])
             : null,
       );
 
@@ -1020,15 +1011,15 @@ class UserGroupByOutputType {
 
   final bool? isPinned;
 
-  final _i2.UserCountAggregateOutputType? $count;
+  final _i2.LastestTimeItemCountAggregateOutputType? $count;
 
-  final _i2.UserAvgAggregateOutputType? $avg;
+  final _i2.LastestTimeItemAvgAggregateOutputType? $avg;
 
-  final _i2.UserSumAggregateOutputType? $sum;
+  final _i2.LastestTimeItemSumAggregateOutputType? $sum;
 
-  final _i2.UserMinAggregateOutputType? $min;
+  final _i2.LastestTimeItemMinAggregateOutputType? $min;
 
-  final _i2.UserMaxAggregateOutputType? $max;
+  final _i2.LastestTimeItemMaxAggregateOutputType? $max;
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -1044,9 +1035,9 @@ class UserGroupByOutputType {
       };
 }
 
-class UserCountOrderByAggregateInput
+class LastestTimeItemCountOrderByAggregateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserCountOrderByAggregateInput({
+  const LastestTimeItemCountOrderByAggregateInput({
     this.id,
     this.name,
     this.cycleExp,
@@ -1074,9 +1065,9 @@ class UserCountOrderByAggregateInput
       };
 }
 
-class UserAvgOrderByAggregateInput
+class LastestTimeItemAvgOrderByAggregateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserAvgOrderByAggregateInput({
+  const LastestTimeItemAvgOrderByAggregateInput({
     this.id,
     this.cycleExp,
   });
@@ -1092,39 +1083,9 @@ class UserAvgOrderByAggregateInput
       };
 }
 
-class UserMaxOrderByAggregateInput
+class LastestTimeItemMaxOrderByAggregateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMaxOrderByAggregateInput({
-    this.id,
-    this.name,
-    this.cycleExp,
-    this.markTime,
-    this.isPinned,
-  });
-
-  final _i2.SortOrder? id;
-
-  final _i2.SortOrder? name;
-
-  final _i2.SortOrder? cycleExp;
-
-  final _i2.SortOrder? markTime;
-
-  final _i2.SortOrder? isPinned;
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'cycleExp': cycleExp,
-        'markTime': markTime,
-        'isPinned': isPinned,
-      };
-}
-
-class UserMinOrderByAggregateInput
-    implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMinOrderByAggregateInput({
+  const LastestTimeItemMaxOrderByAggregateInput({
     this.id,
     this.name,
     this.cycleExp,
@@ -1152,9 +1113,39 @@ class UserMinOrderByAggregateInput
       };
 }
 
-class UserSumOrderByAggregateInput
+class LastestTimeItemMinOrderByAggregateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserSumOrderByAggregateInput({
+  const LastestTimeItemMinOrderByAggregateInput({
+    this.id,
+    this.name,
+    this.cycleExp,
+    this.markTime,
+    this.isPinned,
+  });
+
+  final _i2.SortOrder? id;
+
+  final _i2.SortOrder? name;
+
+  final _i2.SortOrder? cycleExp;
+
+  final _i2.SortOrder? markTime;
+
+  final _i2.SortOrder? isPinned;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'cycleExp': cycleExp,
+        'markTime': markTime,
+        'isPinned': isPinned,
+      };
+}
+
+class LastestTimeItemSumOrderByAggregateInput
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemSumOrderByAggregateInput({
     this.id,
     this.cycleExp,
   });
@@ -1170,9 +1161,9 @@ class UserSumOrderByAggregateInput
       };
 }
 
-class UserOrderByWithAggregationInput
+class LastestTimeItemOrderByWithAggregationInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserOrderByWithAggregationInput({
+  const LastestTimeItemOrderByWithAggregationInput({
     this.id,
     this.name,
     this.cycleExp,
@@ -1195,15 +1186,15 @@ class UserOrderByWithAggregationInput
 
   final _i2.SortOrder? isPinned;
 
-  final _i2.UserCountOrderByAggregateInput? $count;
+  final _i2.LastestTimeItemCountOrderByAggregateInput? $count;
 
-  final _i2.UserAvgOrderByAggregateInput? $avg;
+  final _i2.LastestTimeItemAvgOrderByAggregateInput? $avg;
 
-  final _i2.UserMaxOrderByAggregateInput? $max;
+  final _i2.LastestTimeItemMaxOrderByAggregateInput? $max;
 
-  final _i2.UserMinOrderByAggregateInput? $min;
+  final _i2.LastestTimeItemMinOrderByAggregateInput? $min;
 
-  final _i2.UserSumOrderByAggregateInput? $sum;
+  final _i2.LastestTimeItemSumOrderByAggregateInput? $sum;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -1234,10 +1225,9 @@ class NestedFloatFilter implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<double, _i1.Reference<double>>? equals;
 
-  final _i1.PrismaUnion<Iterable<double>, _i1.Reference<Iterable<double>>>? $in;
+  final Iterable<double>? $in;
 
-  final _i1.PrismaUnion<Iterable<double>, _i1.Reference<Iterable<double>>>?
-      notIn;
+  final Iterable<double>? notIn;
 
   final _i1.PrismaUnion<double, _i1.Reference<double>>? lt;
 
@@ -1282,9 +1272,9 @@ class NestedIntWithAggregatesFilter
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? equals;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? $in;
+  final Iterable<int>? $in;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? notIn;
+  final Iterable<int>? notIn;
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? lt;
 
@@ -1344,9 +1334,9 @@ class IntWithAggregatesFilter
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? equals;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? $in;
+  final Iterable<int>? $in;
 
-  final _i1.PrismaUnion<Iterable<int>, _i1.Reference<Iterable<int>>>? notIn;
+  final Iterable<int>? notIn;
 
   final _i1.PrismaUnion<int, _i1.Reference<int>>? lt;
 
@@ -1407,10 +1397,9 @@ class NestedStringWithAggregatesFilter
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? equals;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>? $in;
+  final Iterable<String>? $in;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>?
-      notIn;
+  final Iterable<String>? notIn;
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? lt;
 
@@ -1466,7 +1455,6 @@ class StringWithAggregatesFilter
     this.contains,
     this.startsWith,
     this.endsWith,
-    this.mode,
     this.not,
     this.$count,
     this.$min,
@@ -1475,10 +1463,9 @@ class StringWithAggregatesFilter
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? equals;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>? $in;
+  final Iterable<String>? $in;
 
-  final _i1.PrismaUnion<Iterable<String>, _i1.Reference<Iterable<String>>>?
-      notIn;
+  final Iterable<String>? notIn;
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? lt;
 
@@ -1493,8 +1480,6 @@ class StringWithAggregatesFilter
   final _i1.PrismaUnion<String, _i1.Reference<String>>? startsWith;
 
   final _i1.PrismaUnion<String, _i1.Reference<String>>? endsWith;
-
-  final _i2.QueryMode? mode;
 
   final _i1.PrismaUnion<String, _i2.NestedStringWithAggregatesFilter>? not;
 
@@ -1516,7 +1501,6 @@ class StringWithAggregatesFilter
         'contains': contains,
         'startsWith': startsWith,
         'endsWith': endsWith,
-        'mode': mode,
         'not': not,
         '_count': $count,
         '_min': $min,
@@ -1542,11 +1526,9 @@ class NestedDateTimeWithAggregatesFilter
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      $in;
+  final Iterable<DateTime>? $in;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      notIn;
+  final Iterable<DateTime>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -1598,11 +1580,9 @@ class DateTimeWithAggregatesFilter
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? equals;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      $in;
+  final Iterable<DateTime>? $in;
 
-  final _i1.PrismaUnion<Iterable<DateTime>, _i1.Reference<Iterable<DateTime>>>?
-      notIn;
+  final Iterable<DateTime>? notIn;
 
   final _i1.PrismaUnion<DateTime, _i1.Reference<DateTime>>? lt;
 
@@ -1696,9 +1676,9 @@ class BoolWithAggregatesFilter
       };
 }
 
-class UserScalarWhereWithAggregatesInput
+class LastestTimeItemScalarWhereWithAggregatesInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserScalarWhereWithAggregatesInput({
+  const LastestTimeItemScalarWhereWithAggregatesInput({
     this.AND,
     this.OR,
     this.NOT,
@@ -1709,13 +1689,13 @@ class UserScalarWhereWithAggregatesInput
     this.isPinned,
   });
 
-  final _i1.PrismaUnion<_i2.UserScalarWhereWithAggregatesInput,
-      Iterable<_i2.UserScalarWhereWithAggregatesInput>>? AND;
+  final _i1.PrismaUnion<_i2.LastestTimeItemScalarWhereWithAggregatesInput,
+      Iterable<_i2.LastestTimeItemScalarWhereWithAggregatesInput>>? AND;
 
-  final Iterable<_i2.UserScalarWhereWithAggregatesInput>? OR;
+  final Iterable<_i2.LastestTimeItemScalarWhereWithAggregatesInput>? OR;
 
-  final _i1.PrismaUnion<_i2.UserScalarWhereWithAggregatesInput,
-      Iterable<_i2.UserScalarWhereWithAggregatesInput>>? NOT;
+  final _i1.PrismaUnion<_i2.LastestTimeItemScalarWhereWithAggregatesInput,
+      Iterable<_i2.LastestTimeItemScalarWhereWithAggregatesInput>>? NOT;
 
   final _i1.PrismaUnion<_i2.IntWithAggregatesFilter, int>? id;
 
@@ -1740,9 +1720,9 @@ class UserScalarWhereWithAggregatesInput
       };
 }
 
-class UserCountAggregateOutputTypeSelect
+class LastestTimeItemCountAggregateOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserCountAggregateOutputTypeSelect({
+  const LastestTimeItemCountAggregateOutputTypeSelect({
     this.id,
     this.name,
     this.cycleExp,
@@ -1774,19 +1754,19 @@ class UserCountAggregateOutputTypeSelect
       };
 }
 
-class UserGroupByOutputTypeCountArgs
+class LastestTimeItemGroupByOutputTypeCountArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserGroupByOutputTypeCountArgs({this.select});
+  const LastestTimeItemGroupByOutputTypeCountArgs({this.select});
 
-  final _i2.UserCountAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemCountAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class UserAvgAggregateOutputTypeSelect
+class LastestTimeItemAvgAggregateOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserAvgAggregateOutputTypeSelect({
+  const LastestTimeItemAvgAggregateOutputTypeSelect({
     this.id,
     this.cycleExp,
   });
@@ -1802,19 +1782,19 @@ class UserAvgAggregateOutputTypeSelect
       };
 }
 
-class UserGroupByOutputTypeAvgArgs
+class LastestTimeItemGroupByOutputTypeAvgArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserGroupByOutputTypeAvgArgs({this.select});
+  const LastestTimeItemGroupByOutputTypeAvgArgs({this.select});
 
-  final _i2.UserAvgAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemAvgAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class UserSumAggregateOutputTypeSelect
+class LastestTimeItemSumAggregateOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserSumAggregateOutputTypeSelect({
+  const LastestTimeItemSumAggregateOutputTypeSelect({
     this.id,
     this.cycleExp,
   });
@@ -1830,59 +1810,19 @@ class UserSumAggregateOutputTypeSelect
       };
 }
 
-class UserGroupByOutputTypeSumArgs
+class LastestTimeItemGroupByOutputTypeSumArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserGroupByOutputTypeSumArgs({this.select});
+  const LastestTimeItemGroupByOutputTypeSumArgs({this.select});
 
-  final _i2.UserSumAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemSumAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class UserMinAggregateOutputTypeSelect
+class LastestTimeItemMinAggregateOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMinAggregateOutputTypeSelect({
-    this.id,
-    this.name,
-    this.cycleExp,
-    this.markTime,
-    this.isPinned,
-  });
-
-  final bool? id;
-
-  final bool? name;
-
-  final bool? cycleExp;
-
-  final bool? markTime;
-
-  final bool? isPinned;
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'cycleExp': cycleExp,
-        'markTime': markTime,
-        'isPinned': isPinned,
-      };
-}
-
-class UserGroupByOutputTypeMinArgs
-    implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserGroupByOutputTypeMinArgs({this.select});
-
-  final _i2.UserMinAggregateOutputTypeSelect? select;
-
-  @override
-  Map<String, dynamic> toJson() => {'select': select};
-}
-
-class UserMaxAggregateOutputTypeSelect
-    implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMaxAggregateOutputTypeSelect({
+  const LastestTimeItemMinAggregateOutputTypeSelect({
     this.id,
     this.name,
     this.cycleExp,
@@ -1910,19 +1850,59 @@ class UserMaxAggregateOutputTypeSelect
       };
 }
 
-class UserGroupByOutputTypeMaxArgs
+class LastestTimeItemGroupByOutputTypeMinArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserGroupByOutputTypeMaxArgs({this.select});
+  const LastestTimeItemGroupByOutputTypeMinArgs({this.select});
 
-  final _i2.UserMaxAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemMinAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class UserGroupByOutputTypeSelect
+class LastestTimeItemMaxAggregateOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserGroupByOutputTypeSelect({
+  const LastestTimeItemMaxAggregateOutputTypeSelect({
+    this.id,
+    this.name,
+    this.cycleExp,
+    this.markTime,
+    this.isPinned,
+  });
+
+  final bool? id;
+
+  final bool? name;
+
+  final bool? cycleExp;
+
+  final bool? markTime;
+
+  final bool? isPinned;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'cycleExp': cycleExp,
+        'markTime': markTime,
+        'isPinned': isPinned,
+      };
+}
+
+class LastestTimeItemGroupByOutputTypeMaxArgs
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemGroupByOutputTypeMaxArgs({this.select});
+
+  final _i2.LastestTimeItemMaxAggregateOutputTypeSelect? select;
+
+  @override
+  Map<String, dynamic> toJson() => {'select': select};
+}
+
+class LastestTimeItemGroupByOutputTypeSelect
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const LastestTimeItemGroupByOutputTypeSelect({
     this.id,
     this.name,
     this.cycleExp,
@@ -1945,15 +1925,20 @@ class UserGroupByOutputTypeSelect
 
   final bool? isPinned;
 
-  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeCountArgs>? $count;
+  final _i1.PrismaUnion<bool, _i2.LastestTimeItemGroupByOutputTypeCountArgs>?
+      $count;
 
-  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeAvgArgs>? $avg;
+  final _i1.PrismaUnion<bool, _i2.LastestTimeItemGroupByOutputTypeAvgArgs>?
+      $avg;
 
-  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeSumArgs>? $sum;
+  final _i1.PrismaUnion<bool, _i2.LastestTimeItemGroupByOutputTypeSumArgs>?
+      $sum;
 
-  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeMinArgs>? $min;
+  final _i1.PrismaUnion<bool, _i2.LastestTimeItemGroupByOutputTypeMinArgs>?
+      $min;
 
-  final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeMaxArgs>? $max;
+  final _i1.PrismaUnion<bool, _i2.LastestTimeItemGroupByOutputTypeMaxArgs>?
+      $max;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -1970,8 +1955,8 @@ class UserGroupByOutputTypeSelect
       };
 }
 
-class AggregateUser {
-  const AggregateUser({
+class AggregateLastestTimeItem {
+  const AggregateLastestTimeItem({
     this.$count,
     this.$avg,
     this.$sum,
@@ -1979,33 +1964,35 @@ class AggregateUser {
     this.$max,
   });
 
-  factory AggregateUser.fromJson(Map json) => AggregateUser(
+  factory AggregateLastestTimeItem.fromJson(Map json) =>
+      AggregateLastestTimeItem(
         $count: json['_count'] is Map
-            ? _i2.UserCountAggregateOutputType.fromJson(json['_count'])
+            ? _i2.LastestTimeItemCountAggregateOutputType.fromJson(
+                json['_count'])
             : null,
         $avg: json['_avg'] is Map
-            ? _i2.UserAvgAggregateOutputType.fromJson(json['_avg'])
+            ? _i2.LastestTimeItemAvgAggregateOutputType.fromJson(json['_avg'])
             : null,
         $sum: json['_sum'] is Map
-            ? _i2.UserSumAggregateOutputType.fromJson(json['_sum'])
+            ? _i2.LastestTimeItemSumAggregateOutputType.fromJson(json['_sum'])
             : null,
         $min: json['_min'] is Map
-            ? _i2.UserMinAggregateOutputType.fromJson(json['_min'])
+            ? _i2.LastestTimeItemMinAggregateOutputType.fromJson(json['_min'])
             : null,
         $max: json['_max'] is Map
-            ? _i2.UserMaxAggregateOutputType.fromJson(json['_max'])
+            ? _i2.LastestTimeItemMaxAggregateOutputType.fromJson(json['_max'])
             : null,
       );
 
-  final _i2.UserCountAggregateOutputType? $count;
+  final _i2.LastestTimeItemCountAggregateOutputType? $count;
 
-  final _i2.UserAvgAggregateOutputType? $avg;
+  final _i2.LastestTimeItemAvgAggregateOutputType? $avg;
 
-  final _i2.UserSumAggregateOutputType? $sum;
+  final _i2.LastestTimeItemSumAggregateOutputType? $sum;
 
-  final _i2.UserMinAggregateOutputType? $min;
+  final _i2.LastestTimeItemMinAggregateOutputType? $min;
 
-  final _i2.UserMaxAggregateOutputType? $max;
+  final _i2.LastestTimeItemMaxAggregateOutputType? $max;
 
   Map<String, dynamic> toJson() => {
         '_count': $count?.toJson(),
@@ -2016,58 +2003,59 @@ class AggregateUser {
       };
 }
 
-class AggregateUserCountArgs
+class AggregateLastestTimeItemCountArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const AggregateUserCountArgs({this.select});
+  const AggregateLastestTimeItemCountArgs({this.select});
 
-  final _i2.UserCountAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemCountAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class AggregateUserAvgArgs
+class AggregateLastestTimeItemAvgArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const AggregateUserAvgArgs({this.select});
+  const AggregateLastestTimeItemAvgArgs({this.select});
 
-  final _i2.UserAvgAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemAvgAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class AggregateUserSumArgs
+class AggregateLastestTimeItemSumArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const AggregateUserSumArgs({this.select});
+  const AggregateLastestTimeItemSumArgs({this.select});
 
-  final _i2.UserSumAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemSumAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class AggregateUserMinArgs
+class AggregateLastestTimeItemMinArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const AggregateUserMinArgs({this.select});
+  const AggregateLastestTimeItemMinArgs({this.select});
 
-  final _i2.UserMinAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemMinAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class AggregateUserMaxArgs
+class AggregateLastestTimeItemMaxArgs
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const AggregateUserMaxArgs({this.select});
+  const AggregateLastestTimeItemMaxArgs({this.select});
 
-  final _i2.UserMaxAggregateOutputTypeSelect? select;
+  final _i2.LastestTimeItemMaxAggregateOutputTypeSelect? select;
 
   @override
   Map<String, dynamic> toJson() => {'select': select};
 }
 
-class AggregateUserSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const AggregateUserSelect({
+class AggregateLastestTimeItemSelect
+    implements _i1.JsonConvertible<Map<String, dynamic>> {
+  const AggregateLastestTimeItemSelect({
     this.$count,
     this.$avg,
     this.$sum,
@@ -2075,15 +2063,15 @@ class AggregateUserSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
     this.$max,
   });
 
-  final _i1.PrismaUnion<bool, _i2.AggregateUserCountArgs>? $count;
+  final _i1.PrismaUnion<bool, _i2.AggregateLastestTimeItemCountArgs>? $count;
 
-  final _i1.PrismaUnion<bool, _i2.AggregateUserAvgArgs>? $avg;
+  final _i1.PrismaUnion<bool, _i2.AggregateLastestTimeItemAvgArgs>? $avg;
 
-  final _i1.PrismaUnion<bool, _i2.AggregateUserSumArgs>? $sum;
+  final _i1.PrismaUnion<bool, _i2.AggregateLastestTimeItemSumArgs>? $sum;
 
-  final _i1.PrismaUnion<bool, _i2.AggregateUserMinArgs>? $min;
+  final _i1.PrismaUnion<bool, _i2.AggregateLastestTimeItemMinArgs>? $min;
 
-  final _i1.PrismaUnion<bool, _i2.AggregateUserMaxArgs>? $max;
+  final _i1.PrismaUnion<bool, _i2.AggregateLastestTimeItemMaxArgs>? $max;
 
   @override
   Map<String, dynamic> toJson() => {
